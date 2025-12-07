@@ -10,4 +10,19 @@ export const createSubscriptionPlanZodSchema = z.object({
   durationInDays: z.number({
     error: "Duration is required!",
   }),
+  features: z
+    .array(
+      z.string({
+        error: "Feature must be a string",
+      })
+    )
+    .min(1, "At least one feature is required"),
+
+  recommended: z.boolean({
+    error: "Recommended field is required!",
+  }),
+
+  color: z.string({
+    error: "Color is required!",
+  }),
 });

@@ -3,4 +3,7 @@ export interface ISubscriptionPlan {
   name: string;
   price: number;
   durationInDays: number;
+  features: string[];
+  recommended: boolean;
+  color: string;
 }

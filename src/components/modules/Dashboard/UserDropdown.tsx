@@ -13,14 +13,19 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { logoutUser } from "@/services/auth/logoutUser";
 import { UserInfo } from "@/types/user.interface";
-import { Settings, User } from "lucide-react";
+import { Home, Settings, User } from "lucide-react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface UserDropdownProps {
   userInfo: UserInfo;
 }
 
 const UserDropdown = ({ userInfo }: UserDropdownProps) => {
+  const pathname = usePathname();
+
+  const showHomeBtn =
+    pathname === "/admin/dashboard" || pathname === "/dashboard";
   const handleLogout = async () => {
     await logoutUser();
   };
@@ -49,9 +54,7 @@ const UserDropdown = ({ userInfo }: UserDropdownProps) => {
           <div className="flex flex-col space-y-1">
             <p className="text-sm font-medium">{userInfo.name}</p>
             <p className="text-xs text-muted-foreground">{userInfo.email}</p>
-            <p className="text-xs text-primary capitalize">
-              {userInfo.role.toLowerCase()}
-            </p>
+            <p className="text-xs text-primary capitalize">{userInfo.role}</p>
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
@@ -67,6 +70,14 @@ const UserDropdown = ({ userInfo }: UserDropdownProps) => {
             Change Password
           </Link>
         </DropdownMenuItem>
+        {showHomeBtn && (
+          <DropdownMenuItem asChild>
+            <Link href="/" className="cursor-pointer">
+              <Home className="mr-2 h-4 w-4" />
+              Homepage
+            </Link>
+          </DropdownMenuItem>
+        )}
         <DropdownMenuSeparator />
         <DropdownMenuItem
           onClick={handleLogout}

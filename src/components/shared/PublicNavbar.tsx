@@ -4,12 +4,16 @@ import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "../ui/sheet";
 import { Menu, Plane } from "lucide-react";
 import { getCookie } from "@/services/auth/tokenHandlers";
 import LogoutButton from "./LogoutButton";
+import UserDropdown from "../modules/Dashboard/UserDropdown";
+import { getUserInfo } from "@/services/auth/getUserInfo";
+import { UserInfo } from "@/types/user.interface";
 
 const PublicNavbar = async () => {
+  const userInfo = (await getUserInfo()) as UserInfo;
   const navItems = [
     { href: "#", label: "Explore Travelers" },
     { href: "#", label: "Find Travel Buddy" },
-    { href: "#", label: "Subscription" },
+    { href: "pricing", label: "Pricing" },
     { href: "#", label: "Services" },
   ];
   const accessToken = await getCookie("accessToken");
@@ -44,7 +48,8 @@ const PublicNavbar = async () => {
 
         <div className="hidden md:flex items-center space-x-2">
           {accessToken ? (
-            <LogoutButton />
+            // <LogoutButton />
+            <UserDropdown userInfo={userInfo} />
           ) : (
             <Link href="/login">
               <Button>Login</Button>

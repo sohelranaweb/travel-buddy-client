@@ -1,6 +1,7 @@
 "use client";
 
 import LogoutButton from "@/components/shared/LogoutButton";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -23,14 +24,25 @@ const UserDropdown = ({ userInfo }: UserDropdownProps) => {
   const handleLogout = async () => {
     await logoutUser();
   };
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon" className="rounded-full">
+        {/* <Button variant="outline" size="icon" className="rounded-full">
           <span className="text-sm font-semibold">
             {userInfo.name.charAt(0).toUpperCase()}
           </span>
-        </Button>
+        </Button> */}
+        <Avatar className="h-8 w-8">
+          <AvatarImage
+            src={
+              userInfo?.admin?.profilePhoto ??
+              userInfo?.traveler?.profilePhoto ??
+              undefined
+            }
+            alt={userInfo.name}
+          />
+        </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56">
         <DropdownMenuLabel>

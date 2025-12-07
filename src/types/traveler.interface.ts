@@ -5,6 +5,7 @@ export interface ITraveler {
   profilePhoto?: string | null;
   contactNumber: string;
   address: string;
+  gender: string;
   isDeleted: boolean;
   createdAt: string;
   updatedAt: string;

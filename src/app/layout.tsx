@@ -32,6 +32,10 @@ export default function RootLayout({
       >
         {children}
         <Toaster position="bottom-right" richColors />
+        {/* Force pointer events enabled for all toasts */}
+        {/* <div className="pointer-events-auto">
+          <Toaster position="bottom-right" richColors />
+        </div> */}
         <LoginSuccessToast></LoginSuccessToast>
         <LogoutSuccessToast></LogoutSuccessToast>
       </body>

@@ -22,7 +22,7 @@ const serverFetchHelper = async (
       Cookie: accessToken ? `accessToken=${accessToken}` : "",
       ...headers,
       // ...(accessToken ? { "Authorization": `Bearer ${accessToken}` } : {}),
-      // ...(accessToken ? { "Authorization": accessToken } : {}),
+      // ...(accessToken ? { Authorization: accessToken } : {}),
     },
     ...restOptions,
   });

@@ -23,13 +23,12 @@ interface UserDropdownProps {
 
 const UserDropdown = ({ userInfo }: UserDropdownProps) => {
   const pathname = usePathname();
-
   const showHomeBtn =
     pathname === "/admin/dashboard" || pathname === "/dashboard";
   const handleLogout = async () => {
     await logoutUser();
   };
-
+  // console.log("from user Dropdown", userInfo);
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>

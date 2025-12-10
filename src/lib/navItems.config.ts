@@ -38,17 +38,17 @@ export const getCommonNavItems = (role: UserRole): NavSection[] => {
 
 export const travelerNavItems: NavSection[] = [
   {
-    title: "Appointments",
+    title: "Subscription",
     items: [
       {
-        title: "My Appointments",
-        href: "/dashboard/my-appointments",
-        icon: "Calendar", // ✅ String
+        title: "My Subscription",
+        href: "/dashboard/my-subscription",
+        icon: "Subscription", // ✅ String
         roles: ["TRAVELER"],
       },
       {
-        title: "Book Appointment",
-        href: "/consultation",
+        title: "My Travel Plans",
+        href: "/dashboard/my-travelPlans",
         icon: "ClipboardList", // ✅ String
         roles: ["TRAVELER"],
       },

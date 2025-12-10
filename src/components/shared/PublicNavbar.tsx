@@ -11,7 +11,7 @@ import { UserInfo } from "@/types/user.interface";
 const PublicNavbar = async () => {
   const userInfo = (await getUserInfo()) as UserInfo;
   const navItems = [
-    { href: "#", label: "Explore Travelers" },
+    { href: "explore-travelers", label: "Explore Travelers" },
     { href: "#", label: "Find Travel Buddy" },
     { href: "pricing", label: "Pricing" },
     { href: "#", label: "Services" },

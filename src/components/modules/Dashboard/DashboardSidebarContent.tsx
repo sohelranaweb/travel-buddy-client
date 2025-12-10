@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { NavSection } from "@/types/dashboard.interface";
 import { UserInfo } from "@/types/user.interface";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
+import { Plane } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -27,7 +28,15 @@ const DashboardSidebarContent = ({
       {/* Logo/Brand */}
       <div className="flex h-16 items-center border-b px-6">
         <Link href={dashboardHome} className="flex items-center space-x-2">
-          <span className="text-xl font-bold text-primary">PH Healthcare</span>
+          {/* <span className="text-xl font-bold text-primary">PH Healthcare</span> */}
+          <span className="flex items-center gap-2 group">
+            <div className="bg-primary p-2 rounded-xl text-primary-foreground group-hover:rotate-12 transition-transform">
+              <Plane className="w-6 h-6 fill-current" />
+            </div>
+            <span className="text-2xl font-display font-bold tracking-tight text-primary">
+              Travel<span className="text-secondary">Buddy</span>
+            </span>
+          </span>
         </Link>
       </div>
 

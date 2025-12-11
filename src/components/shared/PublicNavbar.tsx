@@ -12,7 +12,7 @@ const PublicNavbar = async () => {
   const userInfo = (await getUserInfo()) as UserInfo;
   const navItems = [
     { href: "explore-travelers", label: "Explore Travelers" },
-    { href: "#", label: "Find Travel Buddy" },
+    { href: "find-travel-buddy", label: "Find Travel Buddy" },
     { href: "pricing", label: "Pricing" },
     { href: "#", label: "Services" },
   ];

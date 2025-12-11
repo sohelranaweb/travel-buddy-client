@@ -100,6 +100,47 @@ export async function getMyTravelPlans(queryString?: string) {
     };
   }
 }
+export async function getAlTravelPlans(queryString?: string) {
+  try {
+    const response = await serverFetch.get(
+      `/travelPlan${
+        queryString ? `?${queryString}` : "?sortBy=createdAt&sortOrder=desc"
+      }`
+    );
+    const result = await response.json();
+
+    //     console.log("travelPlans", result);
+    return result;
+  } catch (error: any) {
+    console.error("Error fetching travelPlans:", error);
+    return {
+      success: false,
+      data: [],
+      message:
+        process.env.NODE_ENV === "development"
+          ? error.message
+          : "Failed to fetch travelPlans",
+    };
+  }
+}
+
+export async function getTravelPlanById(id: string) {
+  try {
+    const response = await serverFetch.get(`/travelPlan/${id}`);
+    const result = await response.json();
+    return result;
+  } catch (error: any) {
+    console.log(error);
+    return {
+      success: false,
+      message: `${
+        process.env.NODE_ENV === "development"
+          ? error.message
+          : "Something went wrong"
+      }`,
+    };
+  }
+}
 
 export async function updateTravelPlan(
   id: string,

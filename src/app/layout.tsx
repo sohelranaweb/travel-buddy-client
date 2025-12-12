@@ -4,6 +4,7 @@ import "./globals.css";
 import { Toaster } from "sonner";
 import LoginSuccessToast from "@/components/shared/LoginSuccessToast";
 import LogoutSuccessToast from "@/components/shared/LogoutSuccessToast";
+import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,12 +33,11 @@ export default function RootLayout({
       >
         {children}
         <Toaster position="bottom-right" richColors />
-        {/* Force pointer events enabled for all toasts */}
-        {/* <div className="pointer-events-auto">
-          <Toaster position="bottom-right" richColors />
-        </div> */}
-        <LoginSuccessToast></LoginSuccessToast>
-        <LogoutSuccessToast></LogoutSuccessToast>
+
+        <Suspense fallback={null}>
+          <LoginSuccessToast></LoginSuccessToast>
+          <LogoutSuccessToast></LogoutSuccessToast>
+        </Suspense>
       </body>
     </html>
   );

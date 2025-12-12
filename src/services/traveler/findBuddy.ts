@@ -76,3 +76,81 @@ export async function sendBuddyRequest(_prevState: any, formData: FormData) {
     };
   }
 }
+
+export async function getMyTravelPlanRequestReceived() {
+  try {
+    const response = await serverFetch.get(`/buddy/get-request-received`);
+    const result = await response.json();
+
+    console.log("travelPlan Buddy", result);
+    return result;
+  } catch (error: any) {
+    console.error("Error fetching travelPlans:", error);
+    return {
+      success: false,
+      data: [],
+      message:
+        process.env.NODE_ENV === "development"
+          ? error.message
+          : "Failed to fetch travelPlans",
+    };
+  }
+}
+export async function getMyBuddySentRequest() {
+  try {
+    const response = await serverFetch.get(`/buddy/my-sent-request`);
+    const result = await response.json();
+
+    console.log("My sent buddy request data", result);
+    return result;
+  } catch (error: any) {
+    console.error("Error fetching my Sent buddy request:", error);
+    return {
+      success: false,
+      data: [],
+      message:
+        process.env.NODE_ENV === "development"
+          ? error.message
+          : "Failed to fetch sent my buddy request",
+    };
+  }
+}
+export async function getMyTrips() {
+  try {
+    const response = await serverFetch.get(`/travel-buddies/my-trips`);
+    const result = await response.json();
+
+    console.log("My trips data", result);
+    return result;
+  } catch (error: any) {
+    console.error("Error fetching my trips data:", error);
+    return {
+      success: false,
+      data: [],
+      message:
+        process.env.NODE_ENV === "development"
+          ? error.message
+          : "Failed to fetch sent my trips data",
+    };
+  }
+}
+
+export async function acceptBuddyRequest(id: string) {
+  try {
+    const response = await serverFetch.patch(`/buddy/request/accept/${id}`);
+    const result = await response.json();
+
+    console.log("travelPlan Buddy accept", result);
+    return result;
+  } catch (error: any) {
+    console.error("Error accept buddy request:", error);
+    return {
+      success: false,
+      data: [],
+      message:
+        process.env.NODE_ENV === "development"
+          ? error.message
+          : "Failed to accept Buddy Request",
+    };
+  }
+}

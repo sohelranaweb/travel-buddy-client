@@ -37,6 +37,7 @@ const UserDropdown = ({ userInfo }: UserDropdownProps) => {
             {userInfo.name.charAt(0).toUpperCase()}
           </span>
         </Button> */}
+
         <Avatar className="h-8 w-8">
           <AvatarImage
             src={
@@ -44,8 +45,11 @@ const UserDropdown = ({ userInfo }: UserDropdownProps) => {
               userInfo?.traveler?.profilePhoto ??
               undefined
             }
-            alt={userInfo.name}
+            alt={userInfo?.name}
           />
+          <AvatarFallback>
+            {userInfo?.name?.charAt(0).toUpperCase() || "?"}
+          </AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56">

@@ -258,3 +258,25 @@ export async function deleteTravelPlan(id: string) {
     };
   }
 }
+
+export async function completedTrip(id: string) {
+  try {
+    const response = await serverFetch.patch(
+      `/travel-buddies/plan/${id}/complete`
+    );
+    const result = await response.json();
+
+    console.log("travelPlan successful completed", result);
+    return result;
+  } catch (error: any) {
+    console.error("Error travelPlan completed:", error);
+    return {
+      success: false,
+      data: [],
+      message:
+        process.env.NODE_ENV === "development"
+          ? error.message
+          : "Failed to travel Plan complete",
+    };
+  }
+}

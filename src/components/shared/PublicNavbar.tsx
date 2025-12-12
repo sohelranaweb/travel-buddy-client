@@ -14,7 +14,6 @@ const PublicNavbar = async () => {
     { href: "explore-travelers", label: "Explore Travelers" },
     { href: "find-travel-buddy", label: "Find Travel Buddy" },
     { href: "pricing", label: "Pricing" },
-    { href: "#", label: "Services" },
   ];
   const accessToken = await getCookie("accessToken");
   return (
@@ -83,13 +82,21 @@ const PublicNavbar = async () => {
                 <div className="border-t pt-4 flex flex-col space-y-4">
                   <div className="flex justify-center"></div>
                   {accessToken ? (
+                    // <LogoutButton />
+                    <UserDropdown userInfo={userInfo} />
+                  ) : (
+                    <Link href="/login">
+                      <Button>Login</Button>
+                    </Link>
+                  )}
+                  {/* {accessToken ? (
                     <LogoutButton></LogoutButton>
                   ) : (
                     <Link href="/login" className="text-lg font-medium">
                       <Button>Login</Button>
                     </Link>
                   )}
-                  <Button>Login</Button>
+                  <Button>Login</Button> */}
                 </div>
               </nav>
             </SheetContent>

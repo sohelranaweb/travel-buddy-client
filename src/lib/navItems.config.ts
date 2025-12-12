@@ -46,26 +46,38 @@ export const travelerNavItems: NavSection[] = [
         icon: "Subscription", // ✅ String
         roles: ["TRAVELER"],
       },
+    ],
+  },
+  {
+    title: "Travel Plan Management",
+    items: [
       {
         title: "My Travel Plans",
         href: "/dashboard/my-travelPlans",
         icon: "ClipboardList", // ✅ String
         roles: ["TRAVELER"],
       },
-    ],
-  },
-  {
-    title: "Medical Records",
-    items: [
       {
-        title: "My Prescriptions",
-        href: "/dashboard/my-prescriptions",
+        title: "Travel Buddy Request",
+        href: "/dashboard/buddy-request",
         icon: "FileText", // ✅ String
         roles: ["TRAVELER"],
       },
       {
-        title: "Health Records",
-        href: "/dashboard/health-records",
+        title: "My Sent Request",
+        href: "/dashboard/sent-request",
+        icon: "FileText", // ✅ String
+        roles: ["TRAVELER"],
+      },
+      {
+        title: "My Trips",
+        href: "/dashboard/my-trips",
+        icon: "Activity", // ✅ String
+        roles: ["TRAVELER"],
+      },
+      {
+        title: "My Pending Reviews",
+        href: "/dashboard/my-pending-reviews",
         icon: "Activity", // ✅ String
         roles: ["TRAVELER"],
       },

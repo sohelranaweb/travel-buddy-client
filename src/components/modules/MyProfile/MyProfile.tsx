@@ -191,7 +191,7 @@ const MyProfile = ({ userInfo }: MyProfileProps) => {
                   />
                 </div>
 
-                {/* Patient-Specific Fields */}
+                {/* Traveler-Specific Fields */}
                 {userInfo.role === "TRAVELER" && userInfo.traveler && (
                   <div className="space-y-2 md:col-span-2">
                     <Label htmlFor="address">Address</Label>

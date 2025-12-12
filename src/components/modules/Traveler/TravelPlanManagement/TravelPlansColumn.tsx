@@ -26,8 +26,30 @@ export const travelPlansColumns: Column<ITravelPlan>[] = [
   },
 
   {
+    header: "Start Date",
+    accessor: (travelPlan) => <DateCell date={travelPlan.startDate} />,
+    sortKey: "createdAt",
+  },
+  {
     header: "Created",
     accessor: (travelPlan) => <DateCell date={travelPlan.createdAt} />,
     sortKey: "createdAt",
+  },
+
+  {
+    header: "isCompleted",
+    accessor: (travelPlan) => (
+      <span
+        className="px-3 py-1 rounded-full text-xs font-semibold inline-block"
+        style={{
+          background: travelPlan.isCompleted
+            ? "var(--chart-1)"
+            : "var(--chart-4)",
+          color: "var(--primary-foreground)",
+        }}
+      >
+        {travelPlan.isCompleted ? "Completed" : "Ongoing"}
+      </span>
+    ),
   },
 ];

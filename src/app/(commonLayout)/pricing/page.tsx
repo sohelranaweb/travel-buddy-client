@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import SubscriptionPage from "@/components/modules/Pricing/Pricing";
 import { getSubscriptionPlan } from "@/services/admin/subscriptionPlansManagement";
 

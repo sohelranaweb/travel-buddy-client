@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import BuddyRequestList from "@/components/modules/Traveler/BuddyRequestManagement/BuddyRequestList";
 import { getMyTravelPlanRequestReceived } from "@/services/traveler/findBuddy";
 

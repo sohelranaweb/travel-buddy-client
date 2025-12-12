@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { getMyPendingReviews } from "@/services/traveler/review.service";
 
 import PendingReviewCard, {

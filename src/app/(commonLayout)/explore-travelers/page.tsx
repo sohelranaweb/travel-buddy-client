@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import ExploreTravelers from "@/components/modules/ExploreTraveler/ExploreTravelers";
 import { getTravelers } from "@/services/admin/travelersManagement";
 

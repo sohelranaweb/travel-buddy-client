@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import TravelPlansManagementHeader from "@/components/modules/Traveler/TravelPlanManagement/TravelPlanManagementHeader";
 import TravelPlansFilter from "@/components/modules/Traveler/TravelPlanManagement/TravelPlansFilter";
 import TravelPlansTable from "@/components/modules/Traveler/TravelPlanManagement/TravelPlansTable";
@@ -15,7 +16,7 @@ const MyTravelPlansPage = async ({
   const searchParamsObj = await searchParams;
   const queryString = queryStringFormatter(searchParamsObj);
   const travelPlansResult = await getMyTravelPlans(queryString);
-  
+
   const totalPages = Math.ceil(
     (travelPlansResult?.meta?.total || 1) /
       (travelPlansResult?.meta?.limit || 1)

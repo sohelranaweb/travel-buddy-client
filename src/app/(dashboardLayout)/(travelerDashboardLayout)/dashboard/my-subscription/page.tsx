@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import SubscriptionList from "@/components/modules/Traveler/TravelerSubscription/SubscriptionList";
 import { getMySubscription } from "@/services/traveler/subscription.service";
 

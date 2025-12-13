@@ -5,11 +5,12 @@ import { Input } from "@/components/ui/input";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 import { UserInfo } from "@/types/user.interface";
-import { Bell, Menu, Search } from "lucide-react";
+import { Bell, Home, Menu, Search } from "lucide-react";
 import { useEffect, useState } from "react";
 import DashboardMobileSidebar from "./DashboardMobileSidebar";
 import UserDropdown from "./UserDropdown";
 import { NavSection } from "@/types/dashboard.interface";
+import Link from "next/link";
 
 interface DashboardNavbarContentProps {
   userInfo: UserInfo;
@@ -66,6 +67,11 @@ const DashboardNavbarContent = ({
 
         {/* Right Side Actions */}
         <div className="flex items-center gap-2">
+          {/* Home Page */}
+          <Link href="/" className="cursor-pointer relative">
+            <Home className="h-5 w-5" />
+          </Link>
+
           {/* Notifications */}
           <Button variant="outline" size="icon" className="relative">
             <Bell className="h-5 w-5" />

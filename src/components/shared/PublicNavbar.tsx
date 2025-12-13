@@ -9,7 +9,7 @@ import { getUserInfo } from "@/services/auth/getUserInfo";
 import { UserInfo } from "@/types/user.interface";
 
 const PublicNavbar = async () => {
-  const userInfo = (await getUserInfo()) as UserInfo;
+  const userInfo = await getUserInfo();
   const navItems = [
     { href: "explore-travelers", label: "Explore Travelers" },
     { href: "find-travel-buddy", label: "Find Travel Buddy" },
@@ -46,7 +46,7 @@ const PublicNavbar = async () => {
         </nav>
 
         <div className="hidden md:flex items-center space-x-2">
-          {accessToken ? (
+          {accessToken && userInfo ? (
             // <LogoutButton />
             <UserDropdown userInfo={userInfo} />
           ) : (
@@ -81,7 +81,7 @@ const PublicNavbar = async () => {
                 ))}
                 <div className="border-t pt-4 flex flex-col space-y-4">
                   <div className="flex justify-center"></div>
-                  {accessToken ? (
+                  {accessToken && userInfo ? (
                     // <LogoutButton />
                     <UserDropdown userInfo={userInfo} />
                   ) : (

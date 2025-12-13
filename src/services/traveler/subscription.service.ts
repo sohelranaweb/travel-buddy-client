@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { serverFetch } from "@/lib/server-fetch";
 import { ISubscriptionFormData } from "@/types/subscriptions.interface";
-
+// create subscription
 export async function createSubscription(data: ISubscriptionFormData) {
   try {
     const response = await serverFetch.post("/subscribe/create-subscribe", {

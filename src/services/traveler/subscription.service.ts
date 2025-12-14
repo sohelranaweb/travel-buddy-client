@@ -1,7 +1,7 @@
 "use server";
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { serverFetch } from "@/lib/server-fetch";
-// create subscription
+// create subscription payment
 export async function createSubscription(subscriptionPlanId: string) {
   try {
     const response = await serverFetch.post("/subscribe/create-subscribe", {

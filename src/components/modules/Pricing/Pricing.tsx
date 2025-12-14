@@ -94,13 +94,10 @@ export default function SubscriptionPage({
 
       const response = await createSubscription(planId);
 
-      const data = await response.json();
-
-      if (data.success && data.data?.paymentUrl) {
-        // Redirect user to Stripe checkout page
-        window.location.href = data.data.paymentUrl;
+      if (response.success && response.data?.paymentUrl) {
+        window.location.href = response.data.paymentUrl;
       } else {
-        toast.error(data.message || "Failed to create subscription.");
+        toast.error(response.message || "Failed to create subscription.");
         setLoadingPlanId(null);
       }
     } catch (error) {

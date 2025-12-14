@@ -3,10 +3,10 @@
 import { serverFetch } from "@/lib/server-fetch";
 import { ISubscriptionFormData } from "@/types/subscriptions.interface";
 // create subscription
-export async function createSubscription(data: ISubscriptionFormData) {
+export async function createSubscription(subscriptionPlanId: string) {
   try {
     const response = await serverFetch.post("/subscribe/create-subscribe", {
-      body: JSON.stringify(data),
+      body: JSON.stringify(subscriptionPlanId),
       headers: {
         "Content-Type": "application/json",
       },

@@ -13,6 +13,7 @@ import { ISubscriptionPlan } from "@/types/subscriptionPlans.interface";
 import { useState } from "react";
 import { toast } from "sonner";
 import { serverFetch } from "@/lib/server-fetch";
+import { createSubscription } from "@/services/traveler/subscription.service";
 
 // import { Navbar } from "@/components/navbar";
 // import { Footer } from "@/components/footer";
@@ -91,15 +92,7 @@ export default function SubscriptionPage({
     try {
       setLoadingPlanId(planId);
 
-      const response = await fetch(
-        "http://localhost:5000/api/v1/subscribe/create-subscribe",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          credentials: "include",
-          body: JSON.stringify({ subscriptionPlanId: planId }),
-        }
-      );
+      const response = await createSubscription(planId);
 
       const data = await response.json();
 

@@ -1,12 +1,13 @@
 export const dynamic = "force-dynamic";
 import SubscriptionList from "@/components/modules/Traveler/TravelerSubscription/SubscriptionList";
 import { getMySubscription } from "@/services/traveler/subscription.service";
-
 import { ISubscription } from "@/types/subscriptions.interface";
 
 export default async function MySubscriptionsPage() {
   const response = await getMySubscription();
-  const subscription: ISubscription[] = response?.data || [];
+  const subscription: ISubscription | null = response?.data || null;
+
+  console.log({ response });
 
   return (
     <div className="space-y-6">
@@ -17,7 +18,16 @@ export default async function MySubscriptionsPage() {
         </p>
       </div>
 
-      <SubscriptionList subscription={subscription} />
+      {subscription ? (
+        <SubscriptionList subscription={subscription} />
+      ) : (
+        <div className="text-center py-12">
+          <h3 className="text-lg font-semibold mb-2">No Active Subscription</h3>
+          <p className="text-muted-foreground">
+            You don't have any active subscriptions yet.
+          </p>
+        </div>
+      )}
     </div>
   );
 }

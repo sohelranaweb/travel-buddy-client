@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import AdminsFilter from "@/components/modules/Admin/AdminsManagement/AdminsFilter";
 import AdminsManagementHeader from "@/components/modules/Admin/AdminsManagement/AdminsManagementHeader";
 import AdminsTable from "@/components/modules/Admin/AdminsManagement/AdminsTable";

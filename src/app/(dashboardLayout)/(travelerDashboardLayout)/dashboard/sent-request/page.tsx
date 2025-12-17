@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import SentBuddyList from "@/components/modules/Traveler/SentBuddyRequestManagement/SentBuddyList";
 import { getMyBuddySentRequest } from "@/services/traveler/findBuddy";
 

@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import TravelPlansManagement from "@/components/modules/Admin/TravelPlansManagement/TravelPlansManagement";
 import { getAlTravelPlans } from "@/services/traveler/travelPlan.service";
 

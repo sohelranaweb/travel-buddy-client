@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import TravelersFilter from "@/components/modules/Admin/TravelersManagement/TravelersFilter";
 
 import ManagementPageHeader from "@/components/shared/ManagementPageHeader";

@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import SubscriptionPlansManagementHeader from "@/components/modules/Admin/SubscriptionPlansManagement/SubscriptionPlansManagementHeader";
 import SubscriptionPlansTable from "@/components/modules/Admin/SubscriptionPlansManagement/SubscriptionPlansTable";
 import RefreshButton from "@/components/shared/RefreshButton";

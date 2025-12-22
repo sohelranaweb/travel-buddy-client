@@ -14,7 +14,7 @@ export async function createSubscription(subscriptionPlanId: string) {
     const result = await response.json();
     return result;
   } catch (error: any) {
-    console.error("Error creating appointment:", error);
+    // console.error("Error creating appointment:", error);
     return {
       success: false,
       message:
@@ -79,7 +79,7 @@ export async function getAppointmentById(subscriptionId: string) {
       message: result.message || "Failed to fetch Subscription",
     };
   } catch (error: any) {
-    console.error("Error fetching subscription:", error);
+    // console.error("Error fetching subscription:", error);
     return {
       success: false,
       data: null,

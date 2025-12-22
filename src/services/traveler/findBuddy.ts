@@ -120,7 +120,7 @@ export async function getMyTrips() {
     const response = await serverFetch.get(`/travel-buddies/my-trips`);
     const result = await response.json();
 
-    console.log("My trips data", result);
+    // console.log("My trips data", result);
     return result;
   } catch (error: any) {
     console.error("Error fetching my trips data:", error);
@@ -140,7 +140,7 @@ export async function acceptBuddyRequest(id: string) {
     const response = await serverFetch.patch(`/buddy/request/accept/${id}`);
     const result = await response.json();
 
-    console.log("travelPlan Buddy accept", result);
+    // console.log("travelPlan Buddy accept", result);
     return result;
   } catch (error: any) {
     console.error("Error accept buddy request:", error);

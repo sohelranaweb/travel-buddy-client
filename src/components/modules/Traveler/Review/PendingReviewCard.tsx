@@ -267,10 +267,10 @@ const PendingReviewCard = ({ review }: { review: PendingReview }) => {
         comment: comment.trim(),
       };
 
-      console.log("Submitting review:", reviewData);
+      // console.log("Submitting review:", reviewData);
 
       const result = await createHostReview(review.id, reviewData);
-      console.log("review create", result);
+      // console.log("review create", result);
 
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -288,7 +288,7 @@ const PendingReviewCard = ({ review }: { review: PendingReview }) => {
   };
 
   return (
-    <div className="bg-card rounded-(--radius) shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden border border-border">
+    <div className="bg-card rounded shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden border border-border">
       <div className="bg-primary p-4">
         <h3 className="text-primary-foreground text-xl font-semibold">
           {destination}
@@ -373,12 +373,12 @@ const PendingReviewCard = ({ review }: { review: PendingReview }) => {
         {!showForm ? (
           <button
             onClick={() => setShowForm(true)}
-            className="w-full mt-6 bg-primary hover:opacity-90 text-primary-foreground font-medium py-2 px-2 rounded-(--radius) transition-opacity duration-200 cursor-pointer"
+            className="w-full mt-6 bg-primary hover:opacity-90 text-primary-foreground font-medium py-2 px-2 rounded transition-opacity duration-200 cursor-pointer"
           >
             Write Review
           </button>
         ) : (
-          <div className="mt-6 p-4 bg-muted/50 rounded-(--radius) border border-border">
+          <div className="mt-6 p-4 bg-muted/50 rounded border border-border">
             <h4 className="font-semibold text-foreground mb-4">
               Write Your Review
             </h4>
@@ -417,7 +417,7 @@ const PendingReviewCard = ({ review }: { review: PendingReview }) => {
                 value={comment}
                 onChange={(e) => setComment(e.target.value)}
                 placeholder="Share your experience with this travel buddy..."
-                className="w-full p-3 bg-background border border-input rounded-(--radius) text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring min-h-[100px] resize-none"
+                className="w-full p-3 bg-background border border-input rounded text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring min-h-[100px] resize-none"
               />
             </div>
 
@@ -426,7 +426,7 @@ const PendingReviewCard = ({ review }: { review: PendingReview }) => {
               <button
                 onClick={handleSubmitReview}
                 disabled={isSubmitting}
-                className="flex-1 bg-primary hover:opacity-90 text-primary-foreground font-medium py-1 px-2 rounded-(--radius) transition-opacity duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                className="flex-1 bg-primary hover:opacity-90 text-primary-foreground font-medium py-1 px-2 rounded transition-opacity duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
               >
                 {isSubmitting ? "Submitting..." : "Submit Review"}
               </button>
@@ -437,7 +437,7 @@ const PendingReviewCard = ({ review }: { review: PendingReview }) => {
                   setComment("");
                 }}
                 disabled={isSubmitting}
-                className="flex-1 bg-secondary hover:opacity-90 text-secondary-foreground font-medium py-1 px-2 rounded-(--radius) transition-opacity duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+                className="flex-1 bg-secondary hover:opacity-90 text-secondary-foreground font-medium py-1 px-2 rounded transition-opacity duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
               >
                 Cancel
               </button>

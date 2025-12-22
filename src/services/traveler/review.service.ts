@@ -28,7 +28,7 @@ export async function getBuddyPendingReviews() {
     // console.log("pending", result);
     return result;
   } catch (error: any) {
-    console.error("Error fetching pending reviews:", error);
+    // console.error("Error fetching pending reviews:", error);
     return {
       success: false,
       data: [],

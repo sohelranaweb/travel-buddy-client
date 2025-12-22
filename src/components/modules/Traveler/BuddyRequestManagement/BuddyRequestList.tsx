@@ -424,6 +424,7 @@ const BuddyRequestList = ({ requests }: BuddyRequestListProps) => {
   const [selectedRequest, setSelectedRequest] = useState<BuddyRequest | null>(
     null
   );
+  const [loadingId, setLoadingId] = useState<string | null>(null);
   const [filterStatus, setFilterStatus] = useState("ALL");
   const [localRequests, setLocalRequests] = useState<BuddyRequest[]>(requests);
   const router = useRouter();
@@ -460,6 +461,7 @@ const BuddyRequestList = ({ requests }: BuddyRequestListProps) => {
   });
 
   const handleAccept = async (requestId: string) => {
+    setLoadingId(requestId);
     try {
       const result = await acceptBuddyRequest(requestId);
 
@@ -480,6 +482,8 @@ const BuddyRequestList = ({ requests }: BuddyRequestListProps) => {
       }
     } catch (error: any) {
       toast.error(error.message || "Failed to accept buddy request");
+    } finally {
+      setLoadingId(null);
     }
   };
 
@@ -716,7 +720,33 @@ const BuddyRequestList = ({ requests }: BuddyRequestListProps) => {
                                 color: "var(--primary-foreground)",
                               }}
                             >
-                              Accept
+                              {loadingId === request.id ? (
+                                <span className="flex items-center justify-center gap-2">
+                                  <svg
+                                    className="animate-spin h-5 w-5"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                  >
+                                    <circle
+                                      className="opacity-25"
+                                      cx="12"
+                                      cy="12"
+                                      r="10"
+                                      stroke="currentColor"
+                                      strokeWidth="4"
+                                    ></circle>
+                                    <path
+                                      className="opacity-75"
+                                      fill="currentColor"
+                                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                                    ></path>
+                                  </svg>
+                                  Accepting...
+                                </span>
+                              ) : (
+                                "Accept"
+                              )}
                             </button>
                             <button
                               onClick={() => handleReject(request.id)}

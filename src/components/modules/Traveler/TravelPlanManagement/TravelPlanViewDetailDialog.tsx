@@ -168,6 +168,8 @@ const TravelPlanViewDetailDialog = ({
         toast.success("Trip marked as completed successfully!");
         router.refresh();
         onClose();
+        // Redirect to as host pending review page
+        router.push("/dashboard/host-pending-reviews");
       } else {
         toast.error(result.message || "Failed to complete trip");
       }

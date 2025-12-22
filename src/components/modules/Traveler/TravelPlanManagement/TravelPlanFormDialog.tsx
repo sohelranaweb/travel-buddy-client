@@ -285,7 +285,7 @@ const TravelPlanFormDialog = ({
     } else if (!state.success && state.message) {
       toast.error(state.message);
     }
-  }, [state, onSuccess, onClose]);
+  }, [state]);
 
   const handleClose = () => {
     formRef.current?.reset();

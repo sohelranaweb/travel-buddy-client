@@ -172,12 +172,12 @@ export async function updateTravelPlan(
   if (travelType) rawPayload.travelType = travelType as string;
   if (description !== null) rawPayload.description = description as string;
 
-  console.log("Payload before validation:", rawPayload);
+  // console.log("Payload before validation:", rawPayload);
 
   const validated = zodValidator(rawPayload, updateTravelPlanZodSchema);
 
   if (!validated.success && validated.errors) {
-    console.error("Validation failed:", validated.errors);
+    // console.error("Validation failed:", validated.errors);
     return {
       success: false,
       message: "Validation failed",
@@ -239,8 +239,7 @@ export async function deleteTravelPlan(id: string) {
     const result = await response.json();
 
     // Revalidate the travel plans page
-    revalidatePath("/travel-plans"); // আপনার route অনুযায়ী change করুন
-    revalidatePath("/dashboard"); // যদি dashboard এ থাকে
+    revalidatePath("/dashboard/my-travelPlans");
 
     return {
       success: true,
@@ -266,10 +265,10 @@ export async function completedTrip(id: string) {
     );
     const result = await response.json();
 
-    console.log("travelPlan successful completed", result);
+    // console.log("travelPlan successful completed", result);
     return result;
   } catch (error: any) {
-    console.error("Error travelPlan completed:", error);
+    // console.error("Error travelPlan completed:", error);
     return {
       success: false,
       data: [],

@@ -22,8 +22,8 @@ const ManagementPageHeader = ({
 }: ManagementPageHeaderProps) => {
   const Icon = action?.icon || Plus;
   return (
-    <div className="flex items-center justify-between">
-      <div>
+    <div className="md:flex items-center justify-between md:space-y-0 space-y-6">
+      <div className="">
         <h1 className="text-3xl font-bold">{title}</h1>
         {description && (
           <p className="text-muted-foreground mt-1">{description}</p>

@@ -28,7 +28,6 @@ const DashboardSidebarContent = ({
       {/* Logo/Brand */}
       <div className="flex h-16 items-center border-b px-6">
         <Link href={dashboardHome} className="flex items-center space-x-2">
-          {/* <span className="text-xl font-bold text-primary">PH Healthcare</span> */}
           <span className="flex items-center gap-2 group">
             <div className="bg-primary p-2 rounded-xl text-primary-foreground group-hover:rotate-12 transition-transform">
               <Plane className="w-6 h-6 fill-current" />

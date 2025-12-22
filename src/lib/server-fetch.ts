@@ -1,7 +1,8 @@
 import { getNewAccessToken } from "@/services/auth/auth.service";
 import { getCookie } from "@/services/auth/tokenHandlers";
 
-const BACKEND_API_URL = process.env.NEXT_PUBLIC_BASE_API_URL;
+const BACKEND_API_URL =
+  process.env.NEXT_PUBLIC_BASE_API_URL || "http://localhost:5000/api/v1";
 
 // /auth/login
 const serverFetchHelper = async (
@@ -16,6 +17,9 @@ const serverFetchHelper = async (
     await getNewAccessToken();
   }
 
+  // console.log("🔑 Token exists:", !!accessToken);
+  // console.log("🚀 Calling:", `${BACKEND_API_URL}${endpoint}`);
+
   const response = await fetch(`${BACKEND_API_URL}${endpoint}`, {
     headers: {
       Cookie: accessToken ? `accessToken=${accessToken}` : "",
@@ -25,6 +29,16 @@ const serverFetchHelper = async (
     },
     ...restOptions,
   });
+
+  // ✅ ADD THESE LOGS
+  // console.log("📡 Response Status:", response.status);
+  // console.log("📡 Response OK:", response.ok);
+
+  // Check if error response
+  if (!response.ok) {
+    const errorText = await response.text();
+    console.error("❌ Error Response:", errorText);
+  }
 
   return response;
 };

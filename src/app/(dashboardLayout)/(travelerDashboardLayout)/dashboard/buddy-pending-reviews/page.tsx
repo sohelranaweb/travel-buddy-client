@@ -1,13 +1,14 @@
 export const dynamic = "force-dynamic";
-import { getMyPendingReviews } from "@/services/traveler/review.service";
+import { getBuddyPendingReviews } from "@/services/traveler/review.service";
 
 import PendingReviewCard, {
   PendingReview,
 } from "@/components/modules/Traveler/Review/PendingReviewCard";
+import BuddyPendingReviewCard from "@/components/modules/Traveler/Review/BuddyPendingReviewCard";
 
-const MyPendingReviewsPage = async () => {
-  const result = await getMyPendingReviews();
-  console.log({ result });
+const BuddyPendingReviewsPage = async () => {
+  const result = await getBuddyPendingReviews();
+
   if (!result?.data || result?.data?.length === 0) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
@@ -37,7 +38,7 @@ const MyPendingReviewsPage = async () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {result?.data?.map((review: PendingReview) => (
-            <PendingReviewCard key={review.id} review={review} />
+            <BuddyPendingReviewCard key={review.id} review={review} />
           ))}
         </div>
       </div>
@@ -45,4 +46,4 @@ const MyPendingReviewsPage = async () => {
   );
 };
 
-export default MyPendingReviewsPage;
+export default BuddyPendingReviewsPage;

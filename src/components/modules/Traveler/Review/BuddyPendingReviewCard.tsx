@@ -168,7 +168,7 @@
 "use client";
 import { useState } from "react";
 import { Calendar, MapPin, DollarSign, Clock, Star } from "lucide-react";
-import { createHostReview } from "@/services/traveler/review.service";
+import { createBuddyReview } from "@/services/traveler/review.service";
 import { toast } from "sonner";
 
 interface Traveler {
@@ -216,7 +216,7 @@ export interface PendingReview {
   reviews: any[];
 }
 
-const PendingReviewCard = ({ review }: { review: PendingReview }) => {
+const BuddyPendingReviewCard = ({ review }: { review: PendingReview }) => {
   const [showForm, setShowForm] = useState(false);
   const [rating, setRating] = useState(0);
   const [hoveredRating, setHoveredRating] = useState(0);
@@ -269,8 +269,15 @@ const PendingReviewCard = ({ review }: { review: PendingReview }) => {
 
       console.log("Submitting review:", reviewData);
 
-      const result = await createHostReview(review.id, reviewData);
-      console.log("review create", result);
+      // Replace this with your actual API call
+      // const response = await fetch('/api/reviews', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(reviewData)
+      // });
+
+      const result = await createBuddyReview(review.id, reviewData);
+      console.log("review create by buddy for host", result);
 
       // Simulate API call
       await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -373,7 +380,7 @@ const PendingReviewCard = ({ review }: { review: PendingReview }) => {
         {!showForm ? (
           <button
             onClick={() => setShowForm(true)}
-            className="w-full mt-6 bg-primary hover:opacity-90 text-primary-foreground font-medium py-2 px-2 rounded-(--radius) transition-opacity duration-200 cursor-pointer"
+            className="w-full mt-6 bg-primary hover:opacity-90 text-primary-foreground font-medium py-1 px-2 rounded-(--radius) transition-opacity duration-200 cursor-pointer"
           >
             Write Review
           </button>
@@ -449,4 +456,4 @@ const PendingReviewCard = ({ review }: { review: PendingReview }) => {
   );
 };
 
-export default PendingReviewCard;
+export default BuddyPendingReviewCard;

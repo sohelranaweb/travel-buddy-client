@@ -43,7 +43,7 @@ export const travelerNavItems: NavSection[] = [
       {
         title: "My Subscription",
         href: "/dashboard/my-subscription",
-        icon: "Subscription", // ✅ String
+        icon: "Badge", // ✅ String
         roles: ["TRAVELER"],
       },
     ],
@@ -76,8 +76,14 @@ export const travelerNavItems: NavSection[] = [
         roles: ["TRAVELER"],
       },
       {
-        title: "My Pending Reviews",
-        href: "/dashboard/my-pending-reviews",
+        title: "Host Pending Reviews",
+        href: "/dashboard/host-pending-reviews",
+        icon: "Activity", // ✅ String
+        roles: ["TRAVELER"],
+      },
+      {
+        title: "Buddy Pending Reviews",
+        href: "/dashboard/buddy-pending-reviews",
         icon: "Activity", // ✅ String
         roles: ["TRAVELER"],
       },
@@ -114,9 +120,9 @@ export const adminNavItems: NavSection[] = [
         roles: ["ADMIN"],
       },
       {
-        title: "Schedules",
-        href: "/admin/dashboard/schedules-management",
-        icon: "Clock", // ✅ String
+        title: "Subscribers",
+        href: "/admin/dashboard/subscribers-management",
+        icon: "UserStar", // ✅ String
         roles: ["ADMIN"],
       },
       {

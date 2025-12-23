@@ -8,6 +8,7 @@ import { NavSection } from "@/types/dashboard.interface";
 import { UserInfo } from "@/types/user.interface";
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 import { Plane } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -91,9 +92,20 @@ const DashboardSidebarContent = ({
       <div className="border-t p-4">
         <div className="flex items-center gap-3">
           <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center">
-            <span className="text-sm font-semibold text-primary">
+            {/* <span className="text-sm font-semibold text-primary">
               {userInfo.name.charAt(0).toUpperCase()}
-            </span>
+            </span> */}
+            <Image
+              className="rounded-full"
+              src={
+                userInfo?.admin?.profilePhoto ??
+                userInfo?.traveler?.profilePhoto ??
+                ""
+              }
+              alt={userInfo?.name}
+              width={200}
+              height={200}
+            />
           </div>
           <div className="flex-1 overflow-hidden">
             <p className="text-sm font-medium truncate">{userInfo.name}</p>

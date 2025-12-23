@@ -1,6 +1,8 @@
 export const dynamic = "force-dynamic";
 import FindTravelBuddy from "@/components/modules/FindTravelBuddy/FindTravelBuddy";
+import TravelBuddySkeleton from "@/components/modules/FindTravelBuddy/TravelBuddySkeleton";
 import { getAlTravelPlans } from "@/services/traveler/travelPlan.service";
+import { Suspense } from "react";
 
 const FindTravelBuddyPage = async () => {
   const result = await getAlTravelPlans();
@@ -8,7 +10,9 @@ const FindTravelBuddyPage = async () => {
   //   console.log("find travel buddy", travelPlans);
   return (
     <div>
-      <FindTravelBuddy travelPlans={travelPlans}></FindTravelBuddy>
+      <Suspense fallback={<TravelBuddySkeleton />}>
+        <FindTravelBuddy travelPlans={travelPlans}></FindTravelBuddy>
+      </Suspense>
     </div>
   );
 };

@@ -397,10 +397,8 @@ const TravelPlanFormDialog = ({
                 }
               >
                 <option value="SOLO">SOLO</option>
-                <option value="COUPLE">COUPLE</option>
                 <option value="FAMILY">FAMILY</option>
                 <option value="FRIENDS">FRIENDS</option>
-                <option value="GROUP">GROUP</option>
               </select>
               <InputFieldError field="travelType" state={state} />
             </Field>

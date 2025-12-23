@@ -192,7 +192,7 @@ const MyProfile = ({ userInfo }: MyProfileProps) => {
                 </div>
 
                 {/* Traveler-Specific Fields */}
-                {userInfo.role === "TRAVELER" && userInfo.traveler && (
+                {/* {userInfo.role === "TRAVELER" && userInfo.traveler && (
                   <div className="space-y-2 md:col-span-2">
                     <Label htmlFor="address">Address</Label>
                     <Input
@@ -202,6 +202,95 @@ const MyProfile = ({ userInfo }: MyProfileProps) => {
                       disabled={isPending}
                     />
                   </div>
+                )} */}
+
+                {/* Traveler-Specific Fields */}
+                {userInfo.role === "TRAVELER" && userInfo.traveler && (
+                  <>
+                    <div className="space-y-2">
+                      <Label htmlFor="currentLocation">Current Location</Label>
+                      <Input
+                        id="currentLocation"
+                        name="currentLocation"
+                        placeholder="e.g., New York, USA"
+                        defaultValue={userInfo.traveler.currentLocation || ""}
+                        disabled={isPending}
+                      />
+                    </div>
+
+                    <div className="space-y-2">
+                      <Label htmlFor="gender">Gender</Label>
+                      <select
+                        id="gender"
+                        name="gender"
+                        defaultValue={userInfo.traveler.gender || ""}
+                        disabled={isPending}
+                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                      >
+                        <option value="">Select Gender</option>
+                        <option value="MALE">Male</option>
+                        <option value="FEMALE">Female</option>
+                        <option value="OTHER">Other</option>
+                      </select>
+                    </div>
+
+                    <div className="space-y-2 md:col-span-2">
+                      <Label htmlFor="address">Address</Label>
+                      <Input
+                        id="address"
+                        name="address"
+                        defaultValue={userInfo.traveler.address || ""}
+                        disabled={isPending}
+                      />
+                    </div>
+
+                    <div className="space-y-2 md:col-span-2">
+                      <Label htmlFor="bio">Bio</Label>
+                      <textarea
+                        id="bio"
+                        name="bio"
+                        rows={4}
+                        placeholder="Tell us about yourself and your travel experiences..."
+                        defaultValue={userInfo.traveler.bio || ""}
+                        disabled={isPending}
+                        className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                      />
+                    </div>
+
+                    <div className="space-y-2 md:col-span-2">
+                      <Label htmlFor="travelInterests">Travel Interests</Label>
+                      <Input
+                        id="travelInterests"
+                        name="travelInterests"
+                        placeholder="e.g., Adventure, Culture, Food, Photography (comma-separated)"
+                        defaultValue={
+                          userInfo.traveler.travelInterests?.join(", ") || ""
+                        }
+                        disabled={isPending}
+                      />
+                      <p className="text-xs text-muted-foreground">
+                        Enter your interests separated by commas
+                      </p>
+                    </div>
+
+                    <div className="space-y-2 md:col-span-2">
+                      <Label htmlFor="visitedCountries">
+                        Visited Countries
+                      </Label>
+                      <Input
+                        id="visitedCountries"
+                        name="visitedCountries"
+                        placeholder="e.g., USA, Japan, France, Italy (comma-separated)"
+                        defaultValue={
+                          userInfo.traveler.visitedCountries?.join(", ") || ""
+                        }
+                        disabled={isPending}
+                      />
+                      <p className="text-xs text-muted-foreground">
+                        Enter countries you've visited separated by commas
+                      </p>
+                    </div>
+                  </>
                 )}
               </div>
 

@@ -30,16 +30,6 @@ const serverFetchHelper = async (
     ...restOptions,
   });
 
-  // ✅ ADD THESE LOGS
-  // console.log("📡 Response Status:", response.status);
-  // console.log("📡 Response OK:", response.ok);
-
-  // Check if error response
-  if (!response.ok) {
-    const errorText = await response.text();
-    console.error("❌ Error Response:", errorText);
-  }
-
   return response;
 };
 

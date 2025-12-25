@@ -38,13 +38,6 @@ export async function sendBuddyRequest(_prevState: any, formData: FormData) {
   }
 
   try {
-    // serverFetch already:
-    // ✔ reads accessToken from cookie
-    // ✔ refreshes token if expired
-    // ✔ injects Cookie header
-    //
-    // So you do not need to manually read cookies here!
-
     const response = await serverFetch.post("/buddy/request", {
       body: JSON.stringify(validated.data),
       headers: {

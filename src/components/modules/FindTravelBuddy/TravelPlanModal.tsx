@@ -1,3 +1,4 @@
+"use client";
 // import { useState } from "react";
 
 // interface Traveler {
@@ -408,7 +409,7 @@
 
 // export default TravelPlanModal;
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Traveler {
   id: string;
@@ -455,6 +456,15 @@ const TravelPlanModal = ({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState("");
 
+  // Reset state when modal opens/closes
+  useEffect(() => {
+    if (plan) {
+      // Reset when modal opens with a new plan
+      setConnectionNote("");
+      setError("");
+      setIsSubmitting(false);
+    }
+  }, [plan]);
   if (!plan) return null;
 
   const formatDate = (dateString: string) => {

@@ -128,16 +128,8 @@
 
 ### Core
 
-- **React.js** (v18.x) - UI library
+- **Next.js** - UI library
 - **TypeScript** - Type-safe development
-- **React Router DOM** (v6.x) - Client-side routing
-- **Vite** - Build tool and dev server
-
-### State Management
-
-- **Redux Toolkit** - Global state management
-- **React Query / TanStack Query** - Server state management
-- **Redux Persist** - State persistence
 
 ### Styling
 
@@ -152,18 +144,12 @@
 - **Zod** - Schema validation
 - **@hookform/resolvers** - Form validation integration
 
-### HTTP & API
-
-- **Axios** - HTTP client
-- **Axios Interceptors** - Request/response handling
-
 ### Additional Libraries
 
 - **date-fns** - Date manipulation
 - **React Dropzone** - File upload
 - **React Hot Toast** - Notifications
 - **Recharts** - Data visualization (Admin dashboard)
-- **React Helmet Async** - SEO management
 
 ## 🚀 Getting Started
 
@@ -171,8 +157,8 @@
 
 Ensure you have the following installed:
 
-- **Node.js** (v16 or higher)
-- **npm** (v8 or higher) or **yarn** (v1.22 or higher)
+- **Node.js**
+- **npm**
 - **Git**
 
 ### Installation
@@ -180,29 +166,27 @@ Ensure you have the following installed:
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/yourusername/travel-buddy-frontend.git
-cd travel-buddy-frontend
+git clone https://github.com/sohelranaweb/travel-buddy-client.git
+cd travel-buddy-client
 ```
 
 2. **Install dependencies**
 
-```bash
+````bash
 npm install
-# or
-yarn install
-```
+
 
 3. **Configure environment variables**
 
 Create a `.env` file in the root directory:
 
 ```env
-VITE_API_URL=http://localhost:5000/api
+VITE_API_URL=http://localhost:5000/api/v1
 VITE_STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
 VITE_CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
 VITE_CLOUDINARY_UPLOAD_PRESET=your_upload_preset
 VITE_APP_NAME=Travel Buddy
-```
+````
 
 4. **Start the development server**
 
@@ -217,131 +201,237 @@ yarn dev
 Open your browser and navigate to:
 
 ```
-http://localhost:5173
+http://localhost:3000
 ```
 
 ## 📁 Project Structure
 
 ```
-travel-buddy-frontend/
-├── public/
-│   ├── favicon.ico
-│   ├── logo.png
-│   └── assets/
+travel-buddy-nextjs/
+├── public/                          # Static assets
+│   ├── images/
+│   ├── icons/
+│   └── favicon.ico
 │
 ├── src/
-│   ├── api/                    # API service layer
-│   │   ├── auth.ts
-│   │   ├── users.ts
-│   │   ├── trips.ts
-│   │   ├── reviews.ts
-│   │   └── payment.ts
+│   ├── app/                         # App Router directory
+│   │   ├── (auth)/                  # Auth route group
+│   │   │   ├── login/
+│   │   │   │   └── page.tsx
+│   │   │   ├── register/
+│   │   │   │   └── page.tsx
+│   │   │   ├── forgot-password/
+│   │   │   │   └── page.tsx
+│   │   │   └── layout.tsx
+│   │   │
+│   │   ├── (dashboard)/             # Dashboard route group (protected)
+│   │   │   ├── dashboard/
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── loading.tsx
+│   │   │   ├── profile/
+│   │   │   │   ├── page.tsx
+│   │   │   │   ├── edit/
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── [userId]/
+│   │   │   │       └── page.tsx
+│   │   │   ├── trips/
+│   │   │   │   ├── page.tsx
+│   │   │   │   ├── create/
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── [tripId]/
+│   │   │   │   │   ├── page.tsx
+│   │   │   │   │   ├── edit/
+│   │   │   │   │   │   └── page.tsx
+│   │   │   │   │   └── loading.tsx
+│   │   │   │   └── my-trips/
+│   │   │   │       └── page.tsx
+│   │   │   ├── search/
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── @modal/
+│   │   │   │       └── (.)trips/[tripId]/
+│   │   │   │           └── page.tsx
+│   │   │   ├── reviews/
+│   │   │   │   ├── page.tsx
+│   │   │   │   └── [reviewId]/
+│   │   │   │       └── page.tsx
+│   │   │   ├── subscription/
+│   │   │   │   ├── page.tsx
+│   │   │   │   ├── success/
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── cancel/
+│   │   │   │       └── page.tsx
+│   │   │   └── layout.tsx
+│   │   │
+│   │   ├── (admin)/                 # Admin route group
+│   │   │   ├── admin/
+│   │   │   │   ├── page.tsx
+│   │   │   │   ├── users/
+│   │   │   │   │   ├── page.tsx
+│   │   │   │   │   └── [userId]/
+│   │   │   │   │       └── page.tsx
+│   │   │   │   ├── trips/
+│   │   │   │   │   └── page.tsx
+│   │   │   │   ├── reviews/
+│   │   │   │   │   └── page.tsx
+│   │   │   │   └── analytics/
+│   │   │   │       └── page.tsx
+│   │   │   └── layout.tsx
+│   │   │
+│   │   ├── api/                     # API routes
+│   │   │   ├── auth/
+│   │   │   │   └── [...nextauth]/
+│   │   │   │       └── route.ts
+│   │   │   ├── users/
+│   │   │   │   ├── route.ts
+│   │   │   │   └── [userId]/
+│   │   │   │       └── route.ts
+│   │   │   ├── trips/
+│   │   │   │   ├── route.ts
+│   │   │   │   └── [tripId]/
+│   │   │   │       └── route.ts
+│   │   │   ├── reviews/
+│   │   │   │   └── route.ts
+│   │   │   ├── payment/
+│   │   │   │   ├── create-checkout/
+│   │   │   │   │   └── route.ts
+│   │   │   │   └── webhook/
+│   │   │   │       └── route.ts
+│   │   │   └── upload/
+│   │   │       └── route.ts
+│   │   │
+│   │   ├── layout.tsx               # Root layout
+│   │   ├── page.tsx                 # Home page
+│   │   ├── loading.tsx              # Global loading
+│   │   ├── error.tsx                # Global error
+│   │   ├── not-found.tsx            # 404 page
+│   │   └── globals.css              # Global styles
 │   │
-│   ├── components/             # Reusable components
+│   ├── components/                  # React components
 │   │   ├── auth/
 │   │   │   ├── LoginForm.tsx
 │   │   │   ├── RegisterForm.tsx
+│   │   │   ├── AuthProvider.tsx
 │   │   │   └── ProtectedRoute.tsx
+│   │   │
 │   │   ├── profile/
 │   │   │   ├── ProfileCard.tsx
-│   │   │   ├── ProfileEdit.tsx
-│   │   │   └── InterestTags.tsx
+│   │   │   ├── ProfileEditForm.tsx
+│   │   │   ├── InterestSelector.tsx
+│   │   │   └── VisitedCountries.tsx
+│   │   │
 │   │   ├── trips/
 │   │   │   ├── TripCard.tsx
 │   │   │   ├── TripForm.tsx
 │   │   │   ├── TripList.tsx
-│   │   │   └── TripDetails.tsx
+│   │   │   ├── TripDetails.tsx
+│   │   │   ├── TripFilters.tsx
+│   │   │   └── TripSkeleton.tsx
+│   │   │
 │   │   ├── search/
 │   │   │   ├── SearchBar.tsx
-│   │   │   ├── FilterPanel.tsx
-│   │   │   └── SearchResults.tsx
+│   │   │   ├── SearchFilters.tsx
+│   │   │   ├── SearchResults.tsx
+│   │   │   └── DestinationAutocomplete.tsx
+│   │   │
 │   │   ├── reviews/
 │   │   │   ├── ReviewCard.tsx
 │   │   │   ├── ReviewForm.tsx
-│   │   │   ├── RatingStars.tsx
+│   │   │   ├── StarRating.tsx
 │   │   │   └── ReviewList.tsx
+│   │   │
 │   │   ├── payment/
 │   │   │   ├── SubscriptionPlans.tsx
+│   │   │   ├── PricingCard.tsx
 │   │   │   ├── CheckoutForm.tsx
-│   │   │   └── PaymentSuccess.tsx
+│   │   │   └── PaymentStatus.tsx
+│   │   │
 │   │   ├── admin/
 │   │   │   ├── UserTable.tsx
 │   │   │   ├── TripModeration.tsx
-│   │   │   └── Analytics.tsx
-│   │   ├── common/
+│   │   │   ├── AnalyticsDashboard.tsx
+│   │   │   └── AdminSidebar.tsx
+│   │   │
+│   │   ├── layout/
 │   │   │   ├── Header.tsx
 │   │   │   ├── Footer.tsx
 │   │   │   ├── Sidebar.tsx
-│   │   │   ├── Button.tsx
-│   │   │   ├── Modal.tsx
-│   │   │   ├── Loader.tsx
-│   │   │   └── ErrorBoundary.tsx
-│   │   └── ui/                # Shadcn/ui components
-│   │       ├── button.tsx
-│   │       ├── card.tsx
-│   │       ├── dialog.tsx
-│   │       └── ...
+│   │   │   ├── Navigation.tsx
+│   │   │   └── MobileMenu.tsx
+│   │   │
+│   │   ├── ui/                      # Shadcn/ui components
+│   │   │   ├── button.tsx
+│   │   │   ├── card.tsx
+│   │   │   ├── dialog.tsx
+│   │   │   ├── input.tsx
+│   │   │   ├── select.tsx
+│   │   │   ├── textarea.tsx
+│   │   │   ├── dropdown-menu.tsx
+│   │   │   ├── toast.tsx
+│   │   │   └── ...
+│   │   │
+│   │   └── shared/
+│   │       ├── LoadingSpinner.tsx
+│   │       ├── ErrorMessage.tsx
+│   │       ├── EmptyState.tsx
+│   │       ├── Modal.tsx
+│   │       ├── Pagination.tsx
+│   │       └── ImageUpload.tsx
 │   │
-│   ├── pages/                  # Page components
-│   │   ├── Home.tsx
-│   │   ├── Login.tsx
-│   │   ├── Register.tsx
-│   │   ├── Profile.tsx
-│   │   ├── EditProfile.tsx
-│   │   ├── CreateTrip.tsx
-│   │   ├── MyTrips.tsx
-│   │   ├── TripDetails.tsx
-│   │   ├── Search.tsx
-│   │   ├── Subscription.tsx
-│   │   ├── Dashboard.tsx       # User dashboard
-│   │   ├── AdminDashboard.tsx
-│   │   └── NotFound.tsx
+│   ├── lib/                         # Utility libraries
+│   │   ├── auth.ts                  # NextAuth configuration
+│   │   ├── db.ts                    # Database connection
+│   │   ├── api.ts                   # API client
+│   │   ├── cloudinary.ts            # Cloudinary config
+│   │   ├── stripe.ts                # Stripe configuration
+│   │   ├── utils.ts                 # Utility functions
+│   │   └── validations.ts           # Zod schemas
 │   │
-│   ├── hooks/                  # Custom React hooks
+│   ├── hooks/                       # Custom React hooks
 │   │   ├── useAuth.ts
 │   │   ├── useDebounce.ts
 │   │   ├── useInfiniteScroll.ts
+│   │   ├── useMediaQuery.ts
 │   │   └── useLocalStorage.ts
 │   │
-│   ├── store/                  # Redux store
-│   │   ├── index.ts
-│   │   ├── slices/
-│   │   │   ├── authSlice.ts
-│   │   │   ├── userSlice.ts
-│   │   │   ├── tripSlice.ts
-│   │   │   └── uiSlice.ts
-│   │   └── hooks.ts
+│   ├── actions/                     # Server actions
+│   │   ├── auth.actions.ts
+│   │   ├── user.actions.ts
+│   │   ├── trip.actions.ts
+│   │   ├── review.actions.ts
+│   │   └── payment.actions.ts
 │   │
-│   ├── types/                  # TypeScript interfaces
+│   ├── store/                       # State management
+│   │   ├── index.ts
+│   │   ├── authStore.ts
+│   │   ├── uiStore.ts
+│   │   └── tripStore.ts
+│   │
+│   ├── types/                       # TypeScript types
+│   │   ├── index.ts
 │   │   ├── user.types.ts
 │   │   ├── trip.types.ts
 │   │   ├── review.types.ts
 │   │   ├── payment.types.ts
-│   │   └── index.ts
+│   │   └── next-auth.d.ts
 │   │
-│   ├── utils/                  # Utility functions
-│   │   ├── validation.ts
-│   │   ├── formatters.ts
-│   │   ├── dateHelpers.ts
-│   │   ├── constants.ts
-│   │   └── axios.config.ts
+│   ├── constants/                   # Constants
+│   │   ├── index.ts
+│   │   ├── routes.ts
+│   │   └── config.ts
 │   │
-│   ├── styles/                 # Global styles
-│   │   ├── index.css
-│   │   └── globals.css
-│   │
-│   ├── App.tsx                 # Root component
-│   ├── main.tsx                # Entry point
-│   └── routes.tsx              # Route configuration
+│   └── middleware.ts                # Next.js middleware
 │
-├── .env                        # Environment variables
-├── .env.example                # Environment variables template
+├── prisma/                          # Prisma schema (optional)
+│   ├── schema.prisma
+│   └── migrations/
+│
+├── .env.local                       # Local environment variables
+├── .env.example                     # Environment template
 ├── .gitignore
-├── index.html
+├── next.config.js                   # Next.js configuration
+├── tailwind.config.ts               # Tailwind configuration
+├── tsconfig.json                    # TypeScript configuration
 ├── package.json
-├── tsconfig.json               # TypeScript configuration
-├── tailwind.config.js          # Tailwind configuration
-├── vite.config.ts              # Vite configuration
 └── README.md
 ```
 
@@ -349,41 +439,13 @@ travel-buddy-frontend/
 
 Create a `.env` file in the root directory with the following variables:
 
-```env
+````env
 # API Configuration
-VITE_API_URL=http://localhost:5000/api
-VITE_API_TIMEOUT=30000
+NEXT_PUBLIC_BASE_API_URL=http://localhost:5000/api
+NODE_ENV=development
+JWT_SECRET=access_token
 
-# Application
-VITE_APP_NAME=Travel Buddy & Meetup
-VITE_APP_URL=http://localhost:5173
 
-# Image Upload (Cloudinary)
-VITE_CLOUDINARY_CLOUD_NAME=your_cloudinary_cloud_name
-VITE_CLOUDINARY_UPLOAD_PRESET=your_upload_preset
-VITE_CLOUDINARY_API_KEY=your_api_key
-
-# Alternative: ImgBB
-VITE_IMGBB_API_KEY=your_imgbb_api_key
-
-# Payment Gateway (Stripe)
-VITE_STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
-
-# Alternative: SSLCommerz
-VITE_SSLCOMMERZ_STORE_ID=your_store_id
-
-# Feature Flags
-VITE_ENABLE_DARK_MODE=true
-VITE_ENABLE_ANALYTICS=false
-VITE_ENABLE_PWA=true
-
-# Analytics (Optional)
-VITE_GOOGLE_ANALYTICS_ID=your_ga_id
-
-# Social Login (Optional)
-VITE_GOOGLE_CLIENT_ID=your_google_client_id
-VITE_FACEBOOK_APP_ID=your_facebook_app_id
-```
 
 ## 📜 Available Scripts
 
@@ -394,7 +456,7 @@ In the project directory, you can run:
 ```bash
 npm run dev          # Start development server
 npm run dev:host     # Start dev server with network access
-```
+````
 
 ### Build
 

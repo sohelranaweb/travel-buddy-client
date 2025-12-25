@@ -4,6 +4,13 @@ Live links: https://travel-buddy-client-taupe.vercel.app/
 
 > Connecting travelers worldwide to transform solo journeys into shared adventures
 
+## 🌍 Overview
+
+**Travel Buddy & Meetup Platform** is a modern, responsive frontend application for a subscription-based social travel platform. It helps travelers find compatible companions for their upcoming trips by providing an intuitive interface for profile management, trip planning, traveler matching, and community reviews.
+
+**Live URL:** [[YOUR_LIVE_URL_HERE](https://travel-buddy-client-taupe.vercel.app)]  
+**Backend API:** [[YOUR_BACKEND_API_URL](https://travel-buddy-server-p1ql.onrender.com/)]
+
 ## 📋 Table of Contents
 
 - [Overview](#overview)
@@ -17,13 +24,6 @@ Live links: https://travel-buddy-client-taupe.vercel.app/
 - [Deployment](#deployment)
 - [Contributing](#contributing)
 - [License](#license)
-
-## 🌍 Overview
-
-**Travel Buddy & Meetup Platform** is a modern, responsive frontend application for a subscription-based social travel platform. It helps travelers find compatible companions for their upcoming trips by providing an intuitive interface for profile management, trip planning, traveler matching, and community reviews.
-
-**Live URL:** [YOUR_LIVE_URL_HERE]  
-**Backend API:** [YOUR_BACKEND_API_URL]
 
 ## ✨ Key Features
 

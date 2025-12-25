@@ -27,15 +27,6 @@ const SubscribersFilter = () => {
 
       {/* Row 2: Filter Controls */}
       <div className="flex items-center gap-3">
-        {/* Email Filter */}
-        {/* <SearchFilter paramName="email" placeholder="Email" /> */}
-
-        {/* Contact Number Filter */}
-        {/* <SearchFilter paramName="contactNumber" placeholder="Contact" /> */}
-
-        {/* Amount Filter */}
-        {/* <SearchFilter paramName="amount" placeholder="Amount" type="number" /> */}
-
         {/* Status Filter */}
         <SelectFilter
           paramName="status"

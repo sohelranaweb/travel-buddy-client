@@ -14,7 +14,9 @@ const MyTravelPlansPage = async ({
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) => {
   const searchParamsObj = await searchParams;
+
   const queryString = queryStringFormatter(searchParamsObj);
+
   const travelPlansResult = await getMyTravelPlans(queryString);
 
   const totalPages = Math.ceil(
@@ -23,6 +25,7 @@ const MyTravelPlansPage = async ({
   );
   //   const travelPlans = travelPlansResult.data.data;
   //   //   console.log({ travelPlans });
+
   return (
     <div className="space-y-6">
       <TravelPlansManagementHeader />
@@ -31,7 +34,7 @@ const MyTravelPlansPage = async ({
       <TravelPlansFilter></TravelPlansFilter>
 
       <Suspense fallback={<TableSkeleton columns={8} rows={10} />}>
-        <TravelPlansTable travelPlans={travelPlansResult?.data?.data || []} />
+        <TravelPlansTable travelPlans={travelPlansResult?.data || []} />
         <TablePagination
           currentPage={travelPlansResult?.meta?.page || 1}
           totalPages={totalPages || 1}

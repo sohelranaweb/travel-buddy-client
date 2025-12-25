@@ -80,10 +80,9 @@ export async function createTravelPlan(_prevState: any, formData: FormData) {
 export async function getMyTravelPlans(queryString?: string) {
   try {
     const response = await serverFetch.get(
-      `/travelPlan/my-travelPlans${
-        queryString ? `?${queryString}` : "?sortBy=createdAt&sortOrder=desc"
-      }`
+      `/travelPlan/my-travelPlans${queryString ? `?${queryString}` : ""}`
     );
+
     const result = await response.json();
 
     //     console.log("travelPlans", result);
@@ -100,6 +99,7 @@ export async function getMyTravelPlans(queryString?: string) {
     };
   }
 }
+
 export async function getAlTravelPlans(queryString?: string) {
   try {
     const response = await serverFetch.get(

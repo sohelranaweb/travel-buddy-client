@@ -6,8 +6,8 @@ import { zodValidator } from "@/lib/zodValidator";
 import { updateTravelerZodSchema } from "@/zod/traveler.validation";
 
 /**
- * GET ALL PATIENTS
- * API: GET /patient?queryParams
+ * GET ALL Travelers
+ * API: GET /traveler?queryParams
  */
 export async function getTravelers(queryString?: string) {
   try {
@@ -30,8 +30,8 @@ export async function getTravelers(queryString?: string) {
 }
 
 /**
- * GET PATIENT BY ID
- * API: GET /patient/:id
+ * GET Traveler BY ID
+ * API: GET /traveler/:id
  */
 export async function getTravelerById(id: string) {
   try {
@@ -52,8 +52,8 @@ export async function getTravelerById(id: string) {
 }
 
 /**
- * UPDATE PATIENT
- * API: PATCH /patient/:id
+ * UPDATE Traveler
+ * API: PATCH /Traveler/:id
  */
 export async function updateTraveler(
   id: string,
@@ -106,8 +106,8 @@ export async function updateTraveler(
 }
 
 /**
- * SOFT DELETE PATIENT
- * API: DELETE /patient/soft/:id
+ * SOFT DELETE TRAVELER
+ * API: DELETE /traveler/soft/:id
  */
 export async function softDeleteTraveler(id: string) {
   try {
@@ -128,8 +128,8 @@ export async function softDeleteTraveler(id: string) {
 }
 
 /**
- * HARD DELETE PATIENT
- * API: DELETE /patient/:id
+ * HARD DELETE TRAVELER
+ * API: DELETE /traveler/:id
  */
 export async function deleteTraveler(id: string) {
   try {

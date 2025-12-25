@@ -1,9 +1,6 @@
 # 🧳 Travel Buddy & Meetup Platform
 
-[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](YOUR_LIVE_URL_HERE)
-[![React](https://img.shields.io/badge/React-18.x-blue)](https://reactjs.org/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.x-38bdf8)](https://tailwindcss.com/)
+Live links: https://travel-buddy-client-taupe.vercel.app/
 
 > Connecting travelers worldwide to transform solo journeys into shared adventures
 

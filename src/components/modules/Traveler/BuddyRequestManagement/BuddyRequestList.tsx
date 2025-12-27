@@ -376,6 +376,7 @@ import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import BuddyRequestModal from "./BuddyRequestModal";
 import { acceptBuddyRequest } from "@/services/traveler/findBuddy";
+import Link from "next/link";
 
 interface Requester {
   id: string;
@@ -565,13 +566,15 @@ const BuddyRequestList = ({ requests }: BuddyRequestListProps) => {
               >
                 <div className="p-6">
                   <div className="flex items-start gap-6">
-                    {/* Requester Info */}
-                    <img
-                      src={request.requester.profilePhoto}
-                      alt={request.requester.name}
-                      className="w-20 h-20 rounded-full object-cover border-4"
-                      style={{ borderColor: "var(--primary)" }}
-                    />
+                    <Link href={`/profile-details/${request.requester.id}`}>
+                      {/* Requester Info */}
+                      <img
+                        src={request.requester.profilePhoto}
+                        alt={request.requester.name}
+                        className="w-20 h-20 rounded-full object-cover border-4"
+                        style={{ borderColor: "var(--primary)" }}
+                      />
+                    </Link>
 
                     <div className="flex-1">
                       {/* Top Row */}

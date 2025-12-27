@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 
 interface Requester {
@@ -161,12 +162,14 @@ const BuddyRequestModal = ({
               About the Requester
             </h3>
             <div className="flex items-center gap-4 mb-4">
-              <img
-                src={request.requester.profilePhoto}
-                alt={request.requester.name}
-                className="w-24 h-24 rounded-full object-cover border-4"
-                style={{ borderColor: "var(--primary)" }}
-              />
+              <Link href={`/profile-details/${request.requester.id}`}>
+                <img
+                  src={request.requester.profilePhoto}
+                  alt={request.requester.name}
+                  className="w-24 h-24 rounded-full object-cover border-4"
+                  style={{ borderColor: "var(--primary)" }}
+                />
+              </Link>
               <div className="flex-1">
                 <h4
                   className="text-2xl font-bold mb-1"

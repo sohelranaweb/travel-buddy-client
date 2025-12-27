@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 // import { useState } from "react";
 
 // interface Traveler {
@@ -575,12 +576,14 @@ const TravelPlanModal = ({
               About the Traveler
             </h3>
             <div className="flex items-center gap-4 mb-4">
-              <img
-                src={plan.traveler.profilePhoto}
-                alt={plan.traveler.name}
-                className="w-20 h-20 rounded-full object-cover border-4"
-                style={{ borderColor: "var(--primary)" }}
-              />
+              <Link href={`/profile-details/${plan.traveler.id}`}>
+                <img
+                  src={plan.traveler.profilePhoto}
+                  alt={plan.traveler.name}
+                  className="w-20 h-20 rounded-full object-cover border-4"
+                  style={{ borderColor: "var(--primary)" }}
+                />
+              </Link>
               <div className="flex-1">
                 <h4
                   className="text-xl font-bold"

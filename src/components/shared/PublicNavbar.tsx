@@ -127,9 +127,9 @@ const PublicNavbar = async () => {
   const userInfo = accessToken ? await getUserInfo() : null;
 
   const navItems = [
-    { href: "explore-travelers", label: "Explore Travelers" },
-    { href: "find-travel-buddy", label: "Find Travel Buddy" },
-    { href: "pricing", label: "Pricing" },
+    { href: "/explore-travelers", label: "Explore Travelers" },
+    { href: "/find-travel-buddy", label: "Find Travel Buddy" },
+    { href: "/pricing", label: "Pricing" },
   ];
 
   return (

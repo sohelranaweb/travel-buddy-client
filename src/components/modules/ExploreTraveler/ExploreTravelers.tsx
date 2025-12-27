@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
 
 interface Traveler {
@@ -86,10 +87,6 @@ const ExploreTravelers = ({ travelers }: ExploreTravelersProps) => {
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const handleConnect = (traveler: Traveler) => {
-    alert(`Connecting with ${traveler.name}`);
   };
 
   return (
@@ -298,16 +295,293 @@ const ExploreTravelers = ({ travelers }: ExploreTravelersProps) => {
 
         {/* Traveler Cards */}
         {currentTravelers.length > 0 ? (
+          // <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+          //   {currentTravelers.map((traveler) => (
+          //     <div
+          //       key={traveler.id}
+          //       className="rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all"
+          //       style={{ background: "var(--card)" }}
+          //     >
+          //       {/* Card Header */}
+          //       <div
+          //         className="h-32 relative"
+          //         style={{
+          //           background: `linear-gradient(135deg, ${
+          //             traveler.isSubscribed
+          //               ? "var(--chart-1)"
+          //               : "var(--chart-3)"
+          //           }, ${
+          //             traveler.isSubscribed
+          //               ? "var(--chart-2)"
+          //               : "var(--chart-5)"
+          //           })`,
+          //         }}
+          //       >
+          //         {traveler.isSubscribed && (
+          //           <div className="absolute top-4 right-4">
+          //             <span
+          //               className="px-3 py-1 rounded-full text-xs font-bold"
+          //               style={{
+          //                 background: "rgba(255,255,255,0.3)",
+          //                 color: "var(--primary-foreground)",
+          //               }}
+          //             >
+          //               ⭐ Premium
+          //             </span>
+          //           </div>
+          //         )}
+          //       </div>
+
+          //       {/* Profile Photo */}
+          //       <div className="flex justify-center -mt-16 mb-4">
+          //         <Link
+          //           href={`/profile-details/${traveler.id}`}
+          //           className="z-0"
+          //         >
+          //           <img
+          //             src={traveler.profilePhoto}
+          //             alt={traveler.name}
+          //             className="w-32 h-32 rounded-full object-cover border-4"
+          //             style={{ borderColor: "var(--card)" }}
+          //           />
+          //         </Link>
+          //       </div>
+
+          //       {/* Card Body */}
+          //       <div className="px-6 pb-6">
+          //         {/* Name */}
+          //         <h3
+          //           className="text-2xl font-bold text-center mb-2"
+          //           style={{ color: "var(--foreground)" }}
+          //         >
+          //           {traveler.name}
+          //         </h3>
+
+          //         {/* Rating */}
+          //         <div className="flex items-center justify-center gap-2 mb-4">
+          //           <div className="flex">
+          //             {[1, 2, 3, 4, 5].map((star) => (
+          //               <span
+          //                 key={star}
+          //                 className="text-lg"
+          //                 style={{
+          //                   color:
+          //                     star <= traveler.averageRating
+          //                       ? "#fbbf24"
+          //                       : "#d1d5db",
+          //                 }}
+          //               >
+          //                 ★
+          //               </span>
+          //             ))}
+          //           </div>
+          //           <span
+          //             className="text-sm font-medium"
+          //             style={{ color: "var(--muted-foreground)" }}
+          //           >
+          //             ({traveler.totalReviews} reviews)
+          //           </span>
+          //         </div>
+
+          //         {/* Bio */}
+          //         {traveler.bio && (
+          //           <p
+          //             className="text-sm text-center mb-4 italic line-clamp-2"
+          //             style={{ color: "var(--muted-foreground)" }}
+          //           >
+          //             "{traveler.bio}"
+          //           </p>
+          //         )}
+
+          //         {/* Info Grid */}
+          //         <div className="space-y-3 mb-4">
+          //           {traveler.currentLocation && (
+          //             <div className="flex items-center gap-3">
+          //               <span
+          //                 className="w-8 h-8 rounded-lg flex items-center justify-center text-sm"
+          //                 style={{ background: "var(--muted)" }}
+          //               >
+          //                 📍
+          //               </span>
+          //               <div className="flex-1">
+          //                 <p
+          //                   className="text-xs"
+          //                   style={{ color: "var(--muted-foreground)" }}
+          //                 >
+          //                   Location
+          //                 </p>
+          //                 <p
+          //                   className="text-sm font-medium"
+          //                   style={{ color: "var(--foreground)" }}
+          //                 >
+          //                   {traveler.currentLocation}
+          //                 </p>
+          //               </div>
+          //             </div>
+          //           )}
+
+          //           {traveler.contactNumber && (
+          //             <div className="flex items-center gap-3">
+          //               <span
+          //                 className="w-8 h-8 rounded-lg flex items-center justify-center text-sm"
+          //                 style={{ background: "var(--muted)" }}
+          //               >
+          //                 📱
+          //               </span>
+          //               <div className="flex-1">
+          //                 <p
+          //                   className="text-xs"
+          //                   style={{ color: "var(--muted-foreground)" }}
+          //                 >
+          //                   Contact
+          //                 </p>
+          //                 <p
+          //                   className="text-sm font-medium"
+          //                   style={{ color: "var(--foreground)" }}
+          //                 >
+          //                   {traveler.contactNumber}
+          //                 </p>
+          //               </div>
+          //             </div>
+          //           )}
+
+          //           <div className="flex items-center gap-3">
+          //             <span
+          //               className="w-8 h-8 rounded-lg flex items-center justify-center text-sm"
+          //               style={{ background: "var(--muted)" }}
+          //             >
+          //               📧
+          //             </span>
+          //             <div className="flex-1">
+          //               <p
+          //                 className="text-xs"
+          //                 style={{ color: "var(--muted-foreground)" }}
+          //               >
+          //                 Email
+          //               </p>
+          //               <p
+          //                 className="text-sm font-medium truncate"
+          //                 style={{ color: "var(--foreground)" }}
+          //               >
+          //                 {traveler.email}
+          //               </p>
+          //             </div>
+          //           </div>
+
+          //           {traveler.gender && (
+          //             <div className="flex items-center gap-3">
+          //               <span
+          //                 className="w-8 h-8 rounded-lg flex items-center justify-center text-sm"
+          //                 style={{ background: "var(--muted)" }}
+          //               >
+          //                 👤
+          //               </span>
+          //               <div className="flex-1">
+          //                 <p
+          //                   className="text-xs"
+          //                   style={{ color: "var(--muted-foreground)" }}
+          //                 >
+          //                   Gender
+          //                 </p>
+          //                 <p
+          //                   className="text-sm font-medium"
+          //                   style={{ color: "var(--foreground)" }}
+          //                 >
+          //                   {traveler.gender}
+          //                 </p>
+          //               </div>
+          //             </div>
+          //           )}
+          //         </div>
+
+          //         {/* Travel Interests */}
+          //         {traveler.travelInterests.length > 0 && (
+          //           <div className="mb-4">
+          //             <p
+          //               className="text-xs font-medium mb-2"
+          //               style={{ color: "var(--muted-foreground)" }}
+          //             >
+          //               Travel Interests
+          //             </p>
+          //             <div className="flex flex-wrap gap-2">
+          //               {traveler.travelInterests.map((interest, index) => (
+          //                 <span
+          //                   key={index}
+          //                   className="px-3 py-1 rounded-full text-xs font-semibold"
+          //                   style={{
+          //                     background: "var(--secondary)",
+          //                     color: "var(--secondary-foreground)",
+          //                   }}
+          //                 >
+          //                   {interest}
+          //                 </span>
+          //               ))}
+          //             </div>
+          //           </div>
+          //         )}
+
+          //         {/* Visited Countries */}
+          //         {traveler.visitedCountries.length > 0 && (
+          //           <div className="mb-4">
+          //             <p
+          //               className="text-xs font-medium mb-2"
+          //               style={{ color: "var(--muted-foreground)" }}
+          //             >
+          //               Visited Countries ({traveler.visitedCountries.length})
+          //             </p>
+          //             <div className="flex flex-wrap gap-2">
+          //               {traveler.visitedCountries.map((country, index) => (
+          //                 <span
+          //                   key={index}
+          //                   className="px-3 py-1 rounded-full text-xs font-semibold"
+          //                   style={{
+          //                     background: "var(--chart-2)",
+          //                     color: "var(--primary-foreground)",
+          //                   }}
+          //                 >
+          //                   {country}
+          //                 </span>
+          //               ))}
+          //             </div>
+          //           </div>
+          //         )}
+
+          //         {/* Member Since */}
+          //         <div
+          //           className="text-center text-xs mb-4 pb-4 border-b"
+          //           style={{
+          //             color: "var(--muted-foreground)",
+          //             borderColor: "var(--border)",
+          //           }}
+          //         >
+          //           Member since {formatDate(traveler.createdAt)}
+          //         </div>
+
+          //         {/* Connect Button */}
+          //         <button
+          //           onClick={() => handleConnect(traveler)}
+          //           className="w-full py-3 rounded-lg font-bold text-base transition-all hover:opacity-90"
+          //           style={{
+          //             background: "var(--primary)",
+          //             color: "var(--primary-foreground)",
+          //           }}
+          //         >
+          //           View Upcoming Travel Plans
+          //         </button>
+          //       </div>
+          //     </div>
+          //   ))}
+          // </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             {currentTravelers.map((traveler) => (
               <div
                 key={traveler.id}
-                className="rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all"
-                style={{ background: "var(--card)" }}
+                className="rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all flex flex-col"
+                style={{ background: "var(--card)", height: "fit-content" }}
               >
                 {/* Card Header */}
                 <div
-                  className="h-32 relative"
+                  className="h-32 relative shrink-0"
                   style={{
                     background: `linear-gradient(135deg, ${
                       traveler.isSubscribed
@@ -336,17 +610,22 @@ const ExploreTravelers = ({ travelers }: ExploreTravelersProps) => {
                 </div>
 
                 {/* Profile Photo */}
-                <div className="flex justify-center -mt-16 mb-4">
-                  <img
-                    src={traveler.profilePhoto}
-                    alt={traveler.name}
-                    className="w-32 h-32 rounded-full object-cover z-0 border-4"
-                    style={{ borderColor: "var(--card)" }}
-                  />
+                <div className="flex justify-center -mt-16 mb-4 shrink-0">
+                  <Link
+                    href={`/profile-details/${traveler.id}`}
+                    className="z-0"
+                  >
+                    <img
+                      src={traveler.profilePhoto}
+                      alt={traveler.name}
+                      className="w-32 h-32 rounded-full object-cover border-4"
+                      style={{ borderColor: "var(--card)" }}
+                    />
+                  </Link>
                 </div>
 
-                {/* Card Body */}
-                <div className="px-6 pb-6">
+                {/* Card Body - Flexible content */}
+                <div className="px-6 pb-6 flex flex-col grow">
                   {/* Name */}
                   <h3
                     className="text-2xl font-bold text-center mb-2"
@@ -382,75 +661,72 @@ const ExploreTravelers = ({ travelers }: ExploreTravelersProps) => {
                   </div>
 
                   {/* Bio */}
-                  {traveler.bio && (
-                    <p
-                      className="text-sm text-center mb-4 italic line-clamp-2"
-                      style={{ color: "var(--muted-foreground)" }}
-                    >
-                      "{traveler.bio}"
-                    </p>
-                  )}
+                  <p
+                    className="text-sm text-center mb-4 italic line-clamp-2 min-h-10"
+                    style={{ color: "var(--muted-foreground)" }}
+                  >
+                    {traveler.bio ? `"${traveler.bio}"` : ""}
+                  </p>
 
                   {/* Info Grid */}
                   <div className="space-y-3 mb-4">
-                    {traveler.currentLocation && (
-                      <div className="flex items-center gap-3">
-                        <span
-                          className="w-8 h-8 rounded-lg flex items-center justify-center text-sm"
-                          style={{ background: "var(--muted)" }}
-                        >
-                          📍
-                        </span>
-                        <div className="flex-1">
-                          <p
-                            className="text-xs"
-                            style={{ color: "var(--muted-foreground)" }}
-                          >
-                            Location
-                          </p>
-                          <p
-                            className="text-sm font-medium"
-                            style={{ color: "var(--foreground)" }}
-                          >
-                            {traveler.currentLocation}
-                          </p>
-                        </div>
-                      </div>
-                    )}
-
-                    {traveler.contactNumber && (
-                      <div className="flex items-center gap-3">
-                        <span
-                          className="w-8 h-8 rounded-lg flex items-center justify-center text-sm"
-                          style={{ background: "var(--muted)" }}
-                        >
-                          📱
-                        </span>
-                        <div className="flex-1">
-                          <p
-                            className="text-xs"
-                            style={{ color: "var(--muted-foreground)" }}
-                          >
-                            Contact
-                          </p>
-                          <p
-                            className="text-sm font-medium"
-                            style={{ color: "var(--foreground)" }}
-                          >
-                            {traveler.contactNumber}
-                          </p>
-                        </div>
-                      </div>
-                    )}
-
+                    {/* Location - Always show label */}
                     <div className="flex items-center gap-3">
                       <span
-                        className="w-8 h-8 rounded-lg flex items-center justify-center text-sm"
+                        className="w-8 h-8 rounded-lg flex items-center justify-center text-sm shrink-0"
+                        style={{ background: "var(--muted)" }}
+                      >
+                        📍
+                      </span>
+                      <div className="flex-1 min-w-0">
+                        <p
+                          className="text-xs"
+                          style={{ color: "var(--muted-foreground)" }}
+                        >
+                          Location
+                        </p>
+                        <p
+                          className="text-sm font-medium h-5"
+                          style={{ color: "var(--foreground)" }}
+                        >
+                          {traveler.currentLocation || ""}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Contact - Always show label */}
+                    <div className="flex items-center gap-3">
+                      <span
+                        className="w-8 h-8 rounded-lg flex items-center justify-center text-sm shrink-0"
+                        style={{ background: "var(--muted)" }}
+                      >
+                        📱
+                      </span>
+                      <div className="flex-1 min-w-0">
+                        <p
+                          className="text-xs"
+                          style={{ color: "var(--muted-foreground)" }}
+                        >
+                          Contact
+                        </p>
+                        <p
+                          className="text-sm font-medium h-5"
+                          style={{ color: "var(--foreground)" }}
+                        >
+                          {traveler.contactNumber || ""}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Email - Always show label */}
+                    <div className="flex items-center gap-3">
+                      <span
+                        className="w-8 h-8 rounded-lg flex items-center justify-center text-sm shrink-0"
                         style={{ background: "var(--muted)" }}
                       >
                         📧
                       </span>
-                      <div className="flex-1">
+                      <div className="flex-1 min-w-0">
                         <p
                           className="text-xs"
                           style={{ color: "var(--muted-foreground)" }}
@@ -458,91 +734,99 @@ const ExploreTravelers = ({ travelers }: ExploreTravelersProps) => {
                           Email
                         </p>
                         <p
-                          className="text-sm font-medium truncate"
+                          className="text-sm font-medium truncate h-5"
                           style={{ color: "var(--foreground)" }}
                         >
-                          {traveler.email}
+                          {traveler.email || ""}
                         </p>
                       </div>
                     </div>
 
-                    {traveler.gender && (
-                      <div className="flex items-center gap-3">
-                        <span
-                          className="w-8 h-8 rounded-lg flex items-center justify-center text-sm"
-                          style={{ background: "var(--muted)" }}
+                    {/* Gender - Always show label */}
+                    <div className="flex items-center gap-3">
+                      <span
+                        className="w-8 h-8 rounded-lg flex items-center justify-center text-sm shrink-0"
+                        style={{ background: "var(--muted)" }}
+                      >
+                        👤
+                      </span>
+                      <div className="flex-1 min-w-0">
+                        <p
+                          className="text-xs"
+                          style={{ color: "var(--muted-foreground)" }}
                         >
-                          👤
-                        </span>
-                        <div className="flex-1">
-                          <p
-                            className="text-xs"
-                            style={{ color: "var(--muted-foreground)" }}
-                          >
-                            Gender
-                          </p>
-                          <p
-                            className="text-sm font-medium"
-                            style={{ color: "var(--foreground)" }}
-                          >
-                            {traveler.gender}
-                          </p>
-                        </div>
+                          Gender
+                        </p>
+                        <p
+                          className="text-sm font-medium h-5"
+                          style={{ color: "var(--foreground)" }}
+                        >
+                          {traveler.gender || ""}
+                        </p>
                       </div>
-                    )}
+                    </div>
                   </div>
 
                   {/* Travel Interests */}
-                  {traveler.travelInterests.length > 0 && (
-                    <div className="mb-4">
-                      <p
-                        className="text-xs font-medium mb-2"
-                        style={{ color: "var(--muted-foreground)" }}
-                      >
-                        Travel Interests
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        {traveler.travelInterests.map((interest, index) => (
-                          <span
-                            key={index}
-                            className="px-3 py-1 rounded-full text-xs font-semibold"
-                            style={{
-                              background: "var(--secondary)",
-                              color: "var(--secondary-foreground)",
-                            }}
-                          >
-                            {interest}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+                  <div className="mb-4 min-h-[60px]">
+                    {traveler.travelInterests &&
+                    traveler.travelInterests.length > 0 ? (
+                      <>
+                        <p
+                          className="text-xs font-medium mb-2"
+                          style={{ color: "var(--muted-foreground)" }}
+                        >
+                          Travel Interests
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {traveler.travelInterests.map((interest, index) => (
+                            <span
+                              key={index}
+                              className="px-3 py-1 rounded-full text-xs font-semibold"
+                              style={{
+                                background: "var(--secondary)",
+                                color: "var(--secondary-foreground)",
+                              }}
+                            >
+                              {interest}
+                            </span>
+                          ))}
+                        </div>
+                      </>
+                    ) : null}
+                  </div>
 
                   {/* Visited Countries */}
-                  {traveler.visitedCountries.length > 0 && (
-                    <div className="mb-4">
-                      <p
-                        className="text-xs font-medium mb-2"
-                        style={{ color: "var(--muted-foreground)" }}
-                      >
-                        Visited Countries ({traveler.visitedCountries.length})
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        {traveler.visitedCountries.map((country, index) => (
-                          <span
-                            key={index}
-                            className="px-3 py-1 rounded-full text-xs font-semibold"
-                            style={{
-                              background: "var(--chart-2)",
-                              color: "var(--primary-foreground)",
-                            }}
-                          >
-                            {country}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
+                  <div className="mb-4 min-h-[60px]">
+                    {traveler.visitedCountries &&
+                    traveler.visitedCountries.length > 0 ? (
+                      <>
+                        <p
+                          className="text-xs font-medium mb-2"
+                          style={{ color: "var(--muted-foreground)" }}
+                        >
+                          Visited Countries ({traveler.visitedCountries.length})
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {traveler.visitedCountries.map((country, index) => (
+                            <span
+                              key={index}
+                              className="px-3 py-1 rounded-full text-xs font-semibold"
+                              style={{
+                                background: "var(--chart-2)",
+                                color: "var(--primary-foreground)",
+                              }}
+                            >
+                              {country}
+                            </span>
+                          ))}
+                        </div>
+                      </>
+                    ) : null}
+                  </div>
+
+                  {/* Spacer to push button to bottom */}
+                  <div className="flex-grow"></div>
 
                   {/* Member Since */}
                   <div
@@ -555,17 +839,18 @@ const ExploreTravelers = ({ travelers }: ExploreTravelersProps) => {
                     Member since {formatDate(traveler.createdAt)}
                   </div>
 
-                  {/* Connect Button */}
-                  <button
-                    onClick={() => handleConnect(traveler)}
-                    className="w-full py-3 rounded-lg font-bold text-base transition-all hover:opacity-90"
-                    style={{
-                      background: "var(--primary)",
-                      color: "var(--primary-foreground)",
-                    }}
-                  >
-                    View Upcoming Travel Plans
-                  </button>
+                  {/* Connect Button - Always at bottom */}
+                  <Link href={`/profile-details/${traveler.id}`}>
+                    <button
+                      className="w-full py-3 rounded-lg font-bold text-base transition-all hover:opacity-90 mt-auto cursor-pointer"
+                      style={{
+                        background: "var(--primary)",
+                        color: "var(--primary-foreground)",
+                      }}
+                    >
+                      View Upcoming Travel Plans
+                    </button>
+                  </Link>
                 </div>
               </div>
             ))}

@@ -4,6 +4,7 @@ import { useState } from "react";
 import TravelPlanModal from "./TravelPlanModal";
 import { sendBuddyRequest } from "@/services/traveler/findBuddy";
 import { toast } from "sonner";
+import Link from "next/link";
 
 interface Traveler {
   id: string;
@@ -265,12 +266,14 @@ const FindTravelBuddy = ({ travelPlans }: FindTravelBuddyProps) => {
                 {/* Card Header with Traveler Info */}
                 <div className="p-6" style={{ background: "var(--muted)" }}>
                   <div className="flex items-center gap-4 mb-4">
-                    <img
-                      src={plan.traveler.profilePhoto}
-                      alt={plan.traveler.name}
-                      className="w-16 h-16 rounded-full object-cover border-4"
-                      style={{ borderColor: "var(--primary)" }}
-                    />
+                    <Link href={`/profile-details/${plan.traveler.id}`}>
+                      <img
+                        src={plan.traveler.profilePhoto}
+                        alt={plan.traveler.name}
+                        className="w-16 h-16 rounded-full object-cover border-4"
+                        style={{ borderColor: "var(--primary)" }}
+                      />
+                    </Link>
                     <div className="flex-1">
                       <h3
                         className="text-lg font-bold"

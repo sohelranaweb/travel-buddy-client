@@ -38,7 +38,7 @@ const UserDropdown = ({ userInfo }: UserDropdownProps) => {
           </span>
         </Button> */}
 
-        <Avatar className="h-8 w-8">
+        <Avatar className="h-8 w-8 cursor-pointer">
           <AvatarImage
             src={
               userInfo?.admin?.profilePhoto ??
@@ -74,10 +74,7 @@ const UserDropdown = ({ userInfo }: UserDropdownProps) => {
           </Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem
-          onClick={handleLogout}
-          className="cursor-pointer text-red-600"
-        >
+        <DropdownMenuItem onClick={handleLogout} className=" text-red-600">
           <LogoutButton />
         </DropdownMenuItem>
       </DropdownMenuContent>

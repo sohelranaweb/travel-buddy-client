@@ -67,11 +67,7 @@ const DashboardNavbarContent = ({
 
         {/* Right Side Actions */}
         <div className="flex items-center gap-2">
-          {/* Home Page */}
-          <Link href="/" className="cursor-pointer relative">
-            <Home className="h-5 w-5" />
-          </Link>
-
+          
           {/* Notifications */}
           <Button
             variant="outline"

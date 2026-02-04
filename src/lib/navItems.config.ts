@@ -9,6 +9,12 @@ export const getCommonNavItems = (role: UserRole): NavSection[] => {
     {
       items: [
         {
+          title: "Home",
+          href: "/",
+          icon: "Home", // ✅ String
+          roles: ["SUPER_ADMIN", "TRAVELER", "ADMIN"],
+        },
+        {
           title: "Dashboard",
           href: defaultDashboard,
           icon: "LayoutDashboard",

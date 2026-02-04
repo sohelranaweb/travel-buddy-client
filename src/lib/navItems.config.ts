@@ -52,6 +52,12 @@ export const travelerNavItems: NavSection[] = [
         icon: "Badge", // ✅ String
         roles: ["TRAVELER"],
       },
+      {
+        title: "Find Buddy",
+        href: "/find-travel-buddy",
+        icon: "User", // ✅ String
+        roles: ["TRAVELER"],
+      },
     ],
   },
   {

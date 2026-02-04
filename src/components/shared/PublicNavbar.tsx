@@ -112,12 +112,13 @@
 import Link from "next/link";
 import { Button } from "../ui/button";
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from "../ui/sheet";
-import { Menu, Plane } from "lucide-react";
+import { LayoutDashboard, Menu, Plane } from "lucide-react";
 import { getCookie } from "@/services/auth/tokenHandlers";
 import LogoutButton from "./LogoutButton";
 import UserDropdown from "../modules/Dashboard/UserDropdown";
 import { getUserInfo } from "@/services/auth/getUserInfo";
 import { UserInfo } from "@/types/user.interface";
+import { getDefaultDashboardRoute } from "@/lib/auth-utils";
 
 const PublicNavbar = async () => {
   // Check for token first before calling getUserInfo
@@ -160,7 +161,15 @@ const PublicNavbar = async () => {
 
         <div className="hidden md:flex items-center space-x-2">
           {accessToken && userInfo ? (
-            <UserDropdown userInfo={userInfo} />
+            <div>
+              <Link href={getDefaultDashboardRoute(userInfo.role)}>
+                <Button variant="outline" className="gap-2">
+                  <LayoutDashboard className="h-4 w-4" />
+                  Dashboard
+                </Button>
+              </Link>
+              <UserDropdown userInfo={userInfo} />
+            </div>
           ) : (
             <Link href="/login">
               <Button>Login</Button>

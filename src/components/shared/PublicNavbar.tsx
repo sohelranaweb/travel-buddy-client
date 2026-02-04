@@ -199,7 +199,18 @@ const PublicNavbar = async () => {
                 ))}
                 <div className="border-t pt-4 flex flex-col space-y-4">
                   {accessToken && userInfo ? (
-                    <UserDropdown userInfo={userInfo} />
+                    <div className="flex gap-2">
+                      <Link href={getDefaultDashboardRoute(userInfo.role)}>
+                        <Button
+                          variant="outline"
+                          className="gap-2 hover:text-primary"
+                        >
+                          <LayoutDashboard className="h-4 w-4" />
+                          Dashboard
+                        </Button>
+                      </Link>
+                      <UserDropdown userInfo={userInfo} />
+                    </div>
                   ) : (
                     <Link href="/login">
                       <Button>Login</Button>

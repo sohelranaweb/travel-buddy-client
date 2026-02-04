@@ -161,9 +161,9 @@ const PublicNavbar = async () => {
 
         <div className="hidden md:flex items-center space-x-2">
           {accessToken && userInfo ? (
-            <div>
+            <div className="flex gap-2">
               <Link href={getDefaultDashboardRoute(userInfo.role)}>
-                <Button variant="outline" className="gap-2">
+                <Button variant="outline" className="gap-2 hover:text-primary">
                   <LayoutDashboard className="h-4 w-4" />
                   Dashboard
                 </Button>

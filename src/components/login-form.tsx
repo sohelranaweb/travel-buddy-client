@@ -1,14 +1,26 @@
 "use client";
 
-import { useActionState, useEffect } from "react";
+import { useActionState, useEffect, useRef } from "react";
 import { Button } from "./ui/button";
 import { Field, FieldDescription, FieldGroup, FieldLabel } from "./ui/field";
 import { Input } from "./ui/input";
 import { loginUser } from "@/services/auth/loginUser";
 import { toast } from "sonner";
+const demo_credentials = {
+  admin: {
+    email: "super@admin.com",
+    password: "123456",
+  },
 
+  traveler: {
+    email: "firoj@ph.com",
+    password: "123456",
+  },
+};
 const LoginForm = ({ redirect }: { redirect?: string }) => {
   const [state, formAction, isPending] = useActionState(loginUser, null);
+  const emailRef = useRef<HTMLInputElement>(null);
+  const passwordRef = useRef<HTMLInputElement>(null);
 
   const getFieldError = (fieldName: string) => {
     if (state && state.errors) {
@@ -25,6 +37,19 @@ const LoginForm = ({ redirect }: { redirect?: string }) => {
       toast.error(state.message);
     }
   }, [state]);
+  const fillCredentials = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    role: keyof typeof demo_credentials,
+  ) => {
+    e.preventDefault();
+    if (emailRef.current) {
+      emailRef.current.value = demo_credentials[role].email;
+    }
+    if (passwordRef.current) {
+      passwordRef.current.value = demo_credentials[role].password;
+    }
+  };
+
   return (
     <form action={formAction}>
       {redirect && <input type="hidden" name="redirect" value={redirect} />}
@@ -34,6 +59,7 @@ const LoginForm = ({ redirect }: { redirect?: string }) => {
           <Field>
             <FieldLabel htmlFor="email">Email</FieldLabel>
             <Input
+              ref={emailRef}
               id="email"
               name="email"
               type="email"
@@ -52,6 +78,7 @@ const LoginForm = ({ redirect }: { redirect?: string }) => {
           <Field>
             <FieldLabel htmlFor="password">Password</FieldLabel>
             <Input
+              ref={passwordRef}
               id="password"
               name="password"
               type="password"
@@ -66,6 +93,20 @@ const LoginForm = ({ redirect }: { redirect?: string }) => {
           </Field>
         </div>
         <FieldGroup className="mt-4">
+          <div className="flex gap-4">
+            <Button
+              variant="outline"
+              onClick={(e) => fillCredentials(e, "admin")}
+            >
+              Admin
+            </Button>
+            <Button
+              variant="outline"
+              onClick={(e) => fillCredentials(e, "traveler")}
+            >
+              Traveler
+            </Button>
+          </div>
           <Field>
             <Button type="submit" disabled={isPending}>
               {isPending ? "Logging in ..." : "Login"}

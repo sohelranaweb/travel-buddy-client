@@ -18,7 +18,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Travel-buddy",
-  description: "A travel buddy application built with Next.js",
+  description: "A travel buddy application built with Next.js user friendly UI",
   icons: {
     icon: "/favicon.ico",
   },
